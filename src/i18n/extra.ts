@@ -50,7 +50,7 @@ export const EXTRA: Record<Lang, Extra> = {
       'vostok-2416': { nombre: 'Vostok 2416B', fabricante: 'Vostok', resumen: 'The Russian movement of the Amphibia: 31 jewels, 19,800 beats per hour and hand winding.', texto: ['The 2416B is an in-house movement that Vostok has made in Chistopol since the 1980s. It beats at 19,800 per hour, a little slower than almost every other movement in the catalogue, and gives about 31 hours of reserve.', 'It can be wound by hand but does not hack. Its finishing is rough and it is not very accurate, but it is very tough and part of the Amphibia’s charm.'], paraQuien: 'For anyone who wants a diver with history and an in-house movement for about €200.' },
     },
     resumen: {
-      'timex-m79-automatic-tw2w47500': 'A seventies-style diver on a steel bracelet with a Japanese Miyota movement for about €200; note that it is only water resistant to 50 m.',
+      'timex-m79-automatic-tw2w47500': 'The Peanuts edition of the M79: a seventies-style diver with Snoopy on the blue dial, a blue and red bezel, a steel bracelet and a display caseback.',
       'timex-expedition-north-titanium-automatic-tw2v54000': 'A titanium field watch with sapphire, 200 m and a display caseback for under €300: light and made for everyday wear.',
       'vostok-amphibia-420059': 'The classic Soviet diver: steel case, acrylic crystal and an in-house Russian movement rated to 200 m thanks to a seal that tightens under pressure.',
       'swatch-sistem51-sutr400': 'A 51-part Swiss automatic assembled by machines, with 90 hours of reserve and a transparent caseback, for about €200.',
@@ -110,7 +110,7 @@ export const EXTRA: Record<Lang, Extra> = {
       'vostok-2416': { nombre: 'Vostok 2416B', fabricante: 'Vostok', resumen: 'Das russische Kaliber der Amphibia: 31 Steine, 19.800 Halbschwingungen pro Stunde und Handaufzug.', texto: ['Das 2416B ist ein Manufakturkaliber, das Vostok seit den Achtzigern in Tschistopol baut. Es arbeitet mit 19.800 Halbschwingungen pro Stunde, etwas weniger als fast alle anderen im Katalog, und bietet rund 31 Stunden Gangreserve.', 'Es lässt sich von Hand aufziehen, hat aber keinen Sekundenstopp. Die Verarbeitung ist rau und die Genauigkeit mäßig, aber es ist sehr robust und gehört zum Charme der Amphibia.'], paraQuien: 'Für alle, die eine Taucheruhr mit Geschichte und eigenem Kaliber für rund 200 € suchen.' },
     },
     resumen: {
-      'timex-m79-automatic-tw2w47500': 'Eine Taucheruhr im Siebziger-Stil am Stahlband mit japanischem Miyota-Werk für rund 200 €; Achtung, nur bis 50 m wasserdicht.',
+      'timex-m79-automatic-tw2w47500': 'Die Peanuts-Edition der M79: eine Taucheruhr im Siebziger-Stil mit Snoopy auf dem blauen Zifferblatt, blau-roter Lünette, Stahlband und Glasboden.',
       'timex-expedition-north-titanium-automatic-tw2v54000': 'Eine Felduhr aus Titan mit Saphirglas, 200 m und Glasboden für unter 300 €: leicht und für den Alltag gemacht.',
       'vostok-amphibia-420059': 'Die klassische sowjetische Taucheruhr: Stahlgehäuse, Acrylglas und ein eigenes russisches Kaliber, dicht bis 200 m dank einer Dichtung, die sich unter Druck anpresst.',
       'swatch-sistem51-sutr400': 'Ein Schweizer Automatikwerk aus 51 Teilen, von Maschinen montiert, mit 90 Stunden Gangreserve und Glasboden für rund 200 €.',
@@ -170,7 +170,7 @@ export const EXTRA: Record<Lang, Extra> = {
       'vostok-2416': { nombre: 'Vostok 2416B', fabricante: 'Vostok', resumen: 'Le calibre russe des Amphibia : 31 rubis, 19 800 alternances par heure et remontage manuel.', texto: ['Le 2416B est un calibre manufacture que Vostok fabrique à Tchistopol depuis les années 1980. Il bat à 19 800 alternances par heure, un peu moins que presque tous ceux du catalogue, et offre environ 31 heures de réserve.', 'Il se remonte à la main mais n’a pas de stop-seconde. Ses finitions sont rustiques et sa précision moyenne, mais il est très résistant et fait partie du charme des Amphibia.'], paraQuien: 'Pour qui veut une plongeuse chargée d’histoire avec un calibre maison pour environ 200 €.' },
     },
     resumen: {
-      'timex-m79-automatic-tw2w47500': 'Une plongeuse au style années 70 sur bracelet acier avec un calibre japonais Miyota pour environ 200 € ; attention, étanche à 50 m seulement.',
+      'timex-m79-automatic-tw2w47500': 'L’édition Peanuts de la M79 : une plongeuse au style années 70 avec Snoopy sur le cadran bleu, une lunette bleue et rouge, un bracelet acier et un fond transparent.',
       'timex-expedition-north-titanium-automatic-tw2v54000': 'Une montre de terrain en titane avec saphir, 200 m et fond transparent pour moins de 300 € : légère et pensée pour tous les jours.',
       'vostok-amphibia-420059': 'La plongeuse soviétique de toujours : boîtier acier, verre acrylique et calibre russe maison étanche à 200 m grâce à un joint qui se resserre sous la pression.',
       'swatch-sistem51-sutr400': 'Un automatique suisse de 51 pièces assemblé par des machines, avec 90 heures de réserve et un fond transparent, pour environ 200 €.',
@@ -230,7 +230,7 @@ export const EXTRA: Record<Lang, Extra> = {
       'vostok-2416': { nombre: 'Vostok 2416B', fabricante: 'Vostok', resumen: 'Il calibro russo degli Amphibia: 31 rubini, 19.800 alternanze all’ora e carica manuale.', texto: ['Il 2416B è un calibro di manifattura che Vostok produce a Čistopol dagli anni Ottanta. Lavora a 19.800 alternanze all’ora, un po’ meno di quasi tutti gli altri del catalogo, e offre circa 31 ore di riserva.', 'Si carica a mano ma non ha lo stop secondi. Ha finiture grezze e una precisione modesta, ma è molto resistente e fa parte del fascino degli Amphibia.'], paraQuien: 'Per chi vuole un subacqueo con una storia e un calibro di manifattura a circa 200 €.' },
     },
     resumen: {
-      'timex-m79-automatic-tw2w47500': 'Un subacqueo in stile anni Settanta con bracciale in acciaio e calibro giapponese Miyota a circa 200 €; attenzione, è impermeabile solo a 50 m.',
+      'timex-m79-automatic-tw2w47500': 'L’edizione Peanuts del M79: un subacqueo in stile anni Settanta con Snoopy sul quadrante blu, lunetta blu e rossa, bracciale in acciaio e fondello a vista.',
       'timex-expedition-north-titanium-automatic-tw2v54000': 'Un orologio da campo in titanio con zaffiro, 200 m e fondello a vista a meno di 300 €: leggero e pensato per tutti i giorni.',
       'vostok-amphibia-420059': 'Il subacqueo sovietico di sempre: cassa in acciaio, vetro acrilico e calibro russo di manifattura impermeabile a 200 m grazie a una guarnizione che si stringe con la pressione.',
       'swatch-sistem51-sutr400': 'Un automatico svizzero di 51 componenti assemblato da macchine, con 90 ore di riserva e fondello trasparente, a circa 200 €.',

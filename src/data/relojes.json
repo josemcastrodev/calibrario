@@ -17,8 +17,8 @@
     "crystal": "Mineral",
     "waterResistanceM": 200,
     "diameterMm": 40,
-    "thicknessMm": 14,
-    "lugToLugMm": 48,
+    "thicknessMm": null,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -36,7 +36,7 @@
     "images": [],
     "summary": "Un automático con calibre japonés NH35A, 200 m y bisel giratorio por poco más de 100 €: la forma más barata de empezar.",
     "verified": false,
-    "dataNotes": "Grosor y entre asas estimados. Comprobar en invictawatch.com.",
+    "dataNotes": "Comprobado en invictawatch.eu: NH35A, 40 mm, cristal mineral, 200 m, brazalete de 20 mm. Invicta no publica grosor, reserva ni frecuencia.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -650,26 +650,26 @@
     "crystal": "Zafiro",
     "waterResistanceM": 100,
     "diameterMm": 42,
-    "thicknessMm": 12.4,
-    "lugToLugMm": 49,
+    "thicknessMm": 12.38,
+    "lugToLugMm": null,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
     "origin": "Suiza",
     "movementOrigin": "Suiza",
     "rotatingBezel": true,
-    "bezelNote": "Bidireccional de 12 horas",
+    "bezelNote": "Bidireccional",
     "caseMaterial": "Acero",
-    "strap": "Acero",
+    "strap": "Piel",
     "dialColor": "Negro",
     "complications": [
       "Fecha"
     ],
     "exhibitionCaseback": false,
     "images": [],
-    "summary": "Un aviador suizo de 42 mm con bisel giratorio de 12 horas para seguir una segunda zona horaria, zafiro y 100 m.",
+    "summary": "Un aviador suizo de 42 mm con bisel giratorio bidireccional, cristal de zafiro, 100 m y correa de piel marrón.",
     "verified": false,
-    "dataNotes": "Algunas tiendas llaman GL224 al calibre. Entre asas estimado; fecha y fondo por confirmar en glycine-watch.ch.",
+    "dataNotes": "Comprobado en glycinewatches.com: SW200-1, 38–41 h, zafiro, 100 m, 42 mm, 12,38 mm, correa de piel de 22 mm. Falta que Glycine publique la frecuencia y si para el segundero.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -691,7 +691,7 @@
     "waterResistanceM": 100,
     "diameterMm": 35,
     "thicknessMm": 10.9,
-    "lugToLugMm": 40,
+    "lugToLugMm": null,
     "lugWidthMm": null,
     "hacking": true,
     "handWinding": true,
@@ -701,7 +701,7 @@
     "bezelNote": null,
     "caseMaterial": "Acero",
     "strap": "Acero (integrado)",
-    "dialColor": "Gris",
+    "dialColor": "Verde",
     "complications": [
       "Fecha"
     ],
@@ -709,7 +709,7 @@
     "images": [],
     "summary": "El PRX automático en 35 mm: el mismo calibre de 80 horas y el brazalete integrado, para muñecas finas o para un tamaño clásico.",
     "verified": false,
-    "dataNotes": "Grosor y entre asas estimados. Comprobar en tissotwatches.com.",
+    "dataNotes": "Retirado de la web de Tissot. Su ficha archivada (04/2024) da esfera verde menta, 10,9 mm, 100 m, zafiro, 80 h y fondo visto. Falta la frecuencia.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -770,8 +770,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 300,
     "diameterMm": 40,
-    "thicknessMm": 12.5,
-    "lugToLugMm": 46.5,
+    "thicknessMm": 12.48,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -789,7 +789,7 @@
     "images": [],
     "summary": "La versión de 40 mm del buceo de Tissot: 300 m, 80 horas de reserva y zafiro, más llevable que el Seastar de 43 mm.",
     "verified": false,
-    "dataNotes": "Entre asas estimado; material del bisel por confirmar en tissotwatches.com.",
+    "dataNotes": "Comprobado en tissotwatches.com (EE. UU.): 80 h, zafiro, 300 m, 40 mm, 12,48 mm, 20 mm entre asas, fondo visto. Falta que Tissot publique la frecuencia del calibre.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -821,7 +821,7 @@
     "bezelNote": "Escala de 24 horas",
     "caseMaterial": "Acero",
     "strap": "Piel",
-    "dialColor": "Negro",
+    "dialColor": "Marrón",
     "complications": [
       "Fecha",
       "GMT"
@@ -1020,8 +1020,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 200,
     "diameterMm": 42.5,
-    "thicknessMm": 11.8,
-    "lugToLugMm": 49,
+    "thicknessMm": 12.3,
+    "lugToLugMm": null,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -1033,13 +1033,13 @@
     "strap": "Acero",
     "dialColor": "Azul",
     "complications": [
-      "Fecha"
+      "Día y fecha"
     ],
     "exhibitionCaseback": false,
     "images": [],
     "summary": "Buceo suizo de 200 m con bisel de cerámica y 80 horas de reserva, con una caja más fina de lo que su tamaño hace pensar.",
     "verified": false,
-    "dataNotes": "Grosor y entre asas por confirmar en midowatches.com.",
+    "dataNotes": "Ficha oficial archivada de midowatches.com (01/2024): Caliber 80 (ETA), 80 h, zafiro, 200 m, 42,5 mm, 12,3 mm, 22 mm entre asas, día y fecha. Falta que Mido publique la frecuencia.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -1090,7 +1090,7 @@
   {
     "id": "timex-m79-automatic-tw2w47500",
     "brand": "Timex",
-    "model": "M79 Automatic",
+    "model": "M79 Automatic Peanuts",
     "ref": "TW2W47500",
     "asin": "B0CWJC2S5B",
     "type": "Buceo",
@@ -1120,9 +1120,9 @@
     "complications": [],
     "exhibitionCaseback": true,
     "images": [],
-    "summary": "Un buceo de estética setentera con brazalete de acero y calibre japonés Miyota por unos 200 €; ojo, solo tiene 50 m de hermeticidad.",
+    "summary": "La edición Peanuts del M79: un buceo de estética setentera con Snoopy en la esfera azul, bisel azul y rojo, brazalete de acero y fondo visto.",
     "verified": false,
-    "dataNotes": "Calibre, fecha, fondo y entre asas por confirmar en timex.com.",
+    "dataNotes": "Según timex.com esta referencia es la edición Peanuts × Timex M79, con Snoopy en la esfera. Timex no publica calibre, reserva ni medidas.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -1162,7 +1162,7 @@
     "images": [],
     "summary": "Un reloj de campo de titanio con zafiro, 200 m y fondo visto por menos de 300 €: ligero y pensado para el uso diario.",
     "verified": false,
-    "dataNotes": "Amazon indica cristal mineral; Timex publica zafiro. Parada de segundero, ancho de correa y entre asas por confirmar en timex.com.",
+    "dataNotes": "Timex lo vende ahora como Expedition Field Post Titanium Automatic: titanio, 41 mm, zafiro, 200 m. No publica calibre, reserva ni medidas.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -1518,8 +1518,8 @@
     "crystal": "Mineral",
     "waterResistanceM": 30,
     "diameterMm": 38,
-    "thicknessMm": 13.45,
-    "lugToLugMm": 45,
+    "thicknessMm": null,
+    "lugToLugMm": null,
     "lugWidthMm": 18,
     "hacking": true,
     "handWinding": true,
@@ -1535,7 +1535,7 @@
     "images": [],
     "summary": "La reedición del reloj de campo que Bulova hizo para el ejército de EE. UU.: 38 mm, parada de segundero y una esfera muy legible.",
     "verified": false,
-    "dataNotes": "Algunas tiendas indican Miyota 82S6. Entre asas estimado. Comprobar en bulova.com.",
+    "dataNotes": "Comprobado en bulova.com: 38 mm, 42 h, cristal mineral abombado, 30 m, correa de 18 mm. Bulova no publica el calibre ni la frecuencia.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -1549,15 +1549,15 @@
       570,
       620
     ],
-    "caliber": "GL224",
+    "caliber": "SW200-1",
     "caliberMaker": "Sellita, base SW200-1",
     "reserveHours": 38,
     "bph": 28800,
     "crystal": "Zafiro",
-    "waterResistanceM": 200,
+    "waterResistanceM": 300,
     "diameterMm": 39,
-    "thicknessMm": 12,
-    "lugToLugMm": 46,
+    "thicknessMm": 11.2,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1575,7 +1575,7 @@
     "images": [],
     "summary": "Un buceo suizo de 39 mm con zafiro y calibre de base Sellita, de líneas sencillas y tamaño contenido para muñecas medianas.",
     "verified": false,
-    "dataNotes": "Amazon indica 300 m; Glycine publica 200 m. Grosor y entre asas por confirmar en glycine-watch.ch.",
+    "dataNotes": "Comprobado en glycinewatches.com: SW200-1, 38–41 h, zafiro, 300 m, 39 mm, 11,2 mm, brazalete de 20 mm. Falta que Glycine publique la frecuencia y si para el segundero.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -2060,8 +2060,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 40,
-    "thicknessMm": 11,
-    "lugToLugMm": 47,
+    "thicknessMm": 10.3,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -2079,7 +2079,7 @@
     "images": [],
     "summary": "Un suizo de vestir de 40 mm con índices aplicados, zafiro y fondo visto, de una marca de Ginebra, por unos 1.000 €.",
     "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en frederiqueconstant.com.",
+    "dataNotes": "Comprobado en frederiqueconstant.com: FC-303 (base SW200), 28.800 A/h, 38 h, 40 mm, 10,3 mm, 50 m, correa de piel de 20 mm. Falta que la marca publique el cristal y el fondo.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -2340,9 +2340,9 @@
     "crystal": "Zafiro",
     "waterResistanceM": 100,
     "diameterMm": 41,
-    "thicknessMm": 12,
-    "lugToLugMm": 49,
-    "lugWidthMm": 22,
+    "thicknessMm": 11.5,
+    "lugToLugMm": null,
+    "lugWidthMm": 21,
     "hacking": true,
     "handWinding": true,
     "origin": "Suiza",
@@ -2350,7 +2350,7 @@
     "rotatingBezel": false,
     "bezelNote": null,
     "caseMaterial": "Acero",
-    "strap": "Acero",
+    "strap": "Piel",
     "dialColor": "Azul",
     "complications": [
       "Fecha"
@@ -2359,7 +2359,7 @@
     "images": [],
     "summary": "Un aviador suizo de 41 mm con números grandes luminosos, zafiro y 100 m, de una marca con historia en la aviación.",
     "verified": false,
-    "dataNotes": "Amazon indica cristal mineral; Alpina publica zafiro. Entre asas estimado.",
+    "dataNotes": "Comprobado en alpinawatches.com: AL-525 (base SW200), 28.800 A/h, 38 h, zafiro, 100 m, 41 mm, 11,5 mm, correa de piel de 21 mm. Falta que Alpina publique si para el segundero y si se carga a mano.",
     "amazonChecked": "2026-10-21"
   },
   {
