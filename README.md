@@ -77,6 +77,6 @@ Cada reloj enlaza a su página exacta (`https://www.amazon.es/dp/{ASIN}?tag=…`
 3. **Etiqueta de Amazon**: `calibrario-21`, ya creada en la cuenta de Afiliados el 21/10/2026. Falta añadir calibrario.com a la lista de webs de la cuenta cuando esté el dominio.
 4. **Sustituir las fotos de muestra** por las oficiales cuando haya PA-API o material de prensa.
 5. **Revisar las traducciones** con un nativo de cada idioma.
-6. **Desplegar en Cloudflare Pages**: orden de compilación `npm run build`, carpeta `dist`, variable `AMAZON_TAG`.
+6. **Despliegue (hecho el 21/10/2026)**: Cloudflare Pages, proyecto `calibrario`, conectado al repositorio privado `josemcastrodev/calibrario` (rama `main`). Cada `git push` publica solo en unos 30 segundos. Orden `npm run build`, carpeta `dist`, Node 24 (`.node-version`). Dominios: calibrario.com, y www.calibrario.com redirige con 301 a la dirección sin www (regla «Redirect from WWW to root» de la zona). `public/_headers` pone `noindex` en calibrario.pages.dev.
 
 Las maquetas de diseño anteriores siguen en `design/` como historial; no forman parte de la web.

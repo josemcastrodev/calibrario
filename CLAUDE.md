@@ -182,13 +182,13 @@ Antes de programar todas las plantillas, propone 2 o 3 direcciones visuales para
 
 ### Estado a 21/10/2026
 
-- Hecho: pasos 1 a 5. Diseño elegido (DESIGN.md, base Sigmaphoto, rojo rubí) y web completa en Astro. Ver README.md.
+- Hecho: pasos 1 a 6. Diseño elegido (DESIGN.md, base Sigmaphoto, rojo rubí) y web completa en Astro, publicada en https://calibrario.com desde el 21/10/2026 (Cloudflare Pages conectado a GitHub `josemcastrodev/calibrario`, cada push a `main` despliega solo). Ver README.md.
 - Multidioma (lo pidió el dueño el 21/10/2026): español, inglés, alemán, francés e italiano, con direcciones traducidas (`/en/watches/…`, `/de/uhren/…`), hreflang y selector de idioma. 1.156 páginas en borrador y 146 en producción. Las traducciones las ha hecho Claude: conviene que las revise un nativo antes de promocionarlas.
 - Catálogo: 59 relojes de 17 marcas, todos con ASIN y página de producto en Amazon.es comprobada a mano el 21/10/2026 (botón de compra y stock). Los modelos sin stock se sustituyeron por su versión vigente o por un equivalente. Los enlaces van al producto exacto (`/dp/{ASIN}`), nunca a una búsqueda.
 - Sin boletín de ofertas: el dueño lo quitó.
 - SEO ampliado: páginas de marca, 29 listados, 14 guías, sitemap con hreflang y buscador en el JSON-LD de la portada. Los textos nuevos están en `src/i18n/extra2.ts`, `guias-es-en.ts` y `guias-de-fr-it.ts`.
 - Desplegables propios (`src/scripts/dropdown.js`) en lugar de los nativos del navegador.
-- Pendiente: verificar los datos (`verified: true`), datos del titular en las páginas legales, añadir calibrario.com a la lista de webs de la cuenta de Afiliados cuando esté comprado el dominio, fotos oficiales, revisar la disponibilidad en Amazon cada mes y desplegar en Cloudflare Pages (paso 6).
+- Pendiente: verificar los datos (`verified: true`; hasta entonces producción no publica fichas), datos del titular en las páginas legales, fotos oficiales, revisar la disponibilidad en Amazon cada mes y dar de alta la web en Google Search Console. calibrario.com ya está en la lista de webs de la cuenta de Afiliados.
 - Afiliados: el 21/10/2026 se creó el ID de seguimiento `calibrario-21` en la cuenta del dueño (la misma que usa `tcgstockup-21`). Global Earning está activo en los 10 países y los datos fiscales de EE. UU. y Canadá están completados.
 
 ## 8. Expectativas realistas
