@@ -36,7 +36,31 @@ const { lang, t } = c;
 const alts = alternates(pageKey);
 const canonical = abs(href(lang, pageKey));
 const xDefault = alts.find(([l]) => l === DEFAULT_LANG)?.[1] ?? href(lang, pageKey);
-const ogImage = image ? abs(image) : undefined;
+const ogImage = abs(image ?? '/og-calibrario.jpg');
+/** Google corta los títulos a unos 60 caracteres: primero sobra « | Calibrario», luego la coletilla tras «:». */
+const SUF = ' | Calibrario';
+function fitTitle(t0: string) {
+  if (t0.length <= 60) return t0;
+  let t1 = t0.endsWith(SUF) ? t0.slice(0, -SUF.length) : t0;
+  if (t1.length <= 60) return t1;
+  const i = t1.indexOf(': ');
+  if (i < 20) return t1;
+  // Se queda con la primera parte del subtítulo («: ficha técnica»), que lleva el idioma y la palabra clave.
+  const head = t1.slice(0, i), first = t1.slice(i + 2).split(/,| y | and | und | et | e | o | or | oder | ou /)[0];
+  const corto = `${head}: ${first}`;
+  return corto.length <= 60 ? corto : head;
+}
+/** Descripciones de 158 caracteres como mucho: se corta en la última frase entera o, si no, en una palabra. */
+function fitDesc(d0: string) {
+  const d = d0.replace(/\s+/g, ' ').trim();
+  if (d.length <= 158) return d;
+  const cut = d.slice(0, 158);
+  const dot = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('.\u00a0'));
+  if (dot >= 90) return cut.slice(0, dot + 1);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:]$/, '') + '…';
+}
+const pageTitle = fitTitle(title);
+const pageDesc = fitDesc(description);
 const avail = await disponibles();
 const H = (key: string) => href(lang, key);
 const nav = [['relojes', t.navWatches], ['comparar', t.navCompare], ['calibres', t.navCalibers], ['guias', t.navGuides]] as const;
@@ -56,8 +80,8 @@ const client = data === undefined ? undefined : {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDesc} />
   {!bare && <link rel="canonical" href={canonical} />}
   {!bare && alts.map(([l, u]) => <link rel="alternate" hreflang={HREFLANG[l]} href={abs(u)} />)}
   {!bare && <link rel="alternate" hreflang="x-default" href={abs(xDefault)} />}
@@ -66,11 +90,17 @@ const client = data === undefined ? undefined : {
   <meta property="og:site_name" content="Calibrario" />
   <meta property="og:locale" content={OG_LOCALE[lang]} />
   {alts.filter(([l]) => l !== lang).map(([l]) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDesc} />
   <meta property="og:url" content={canonical} />
-  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:image" content={ogImage} />
+  {!image && <meta property="og:image:width" content="1200" />}
+  {!image && <meta property="og:image:height" content="630" />}
+  <meta property="og:image:alt" content={pageTitle} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDesc} />
+  <meta name="twitter:image" content={ogImage} />
   <meta name="theme-color" content="#ffffff" />
   <link rel="icon" href="/favicon.ico?v=3" sizes="32x32" />
   <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />

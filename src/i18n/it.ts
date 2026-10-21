@@ -100,7 +100,7 @@ export const it: Dict = {
     cmpLead: 'Fai clic sul nome di una colonna per cambiare orologio. Ogni riga mostra lo stesso dato per tutti e tre e il valore migliore appare in rosso. Il confronto resta salvato nell’indirizzo della pagina per condividerlo.',
     change: 'Cambia', datum: 'Dato', pairs: 'Confronti a due', catPrep: 'Il catalogo è in preparazione.',
 
-    pairTitle: '{a} o {b}: confronto in cifre | Calibrario',
+    pairTitle: '{a} vs {b}: confronto in cifre | Calibrario',
     pairDesc: '{a} contro {b}: calibro, riserva di carica, vetro, impermeabilità e misure confrontati dato per dato, con le differenze che contano.',
     versus: 'contro', differences: 'Le differenze', sameData: 'Se preferisci il suo design: nei dati principali sono molto vicini.', fullSheet: 'Scheda completa',
     toScale: 'Faccia a faccia, in scala', toScaleLead: 'Entrambi disegnati con la stessa scala, a partire dalle misure dei produttori.', lugsShort: 'ansa-ansa', thickShort: 'di spessore',

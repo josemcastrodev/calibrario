@@ -29,7 +29,7 @@ const draft = !a.verified || !b.verified;
 <Base
   c={c}
   pageKey={`par:${p.slug}`}
-  title={fill(t.pairTitle, { a: c.name(a), b: c.name(b) })}
+  title={fill(t.pairTitle, { a: c.name(a), b: a.brand === b.brand ? b.model : c.name(b) })}
   description={fill(t.pairDesc, { a: c.name(a), b: c.name(b) })}
   current="comparar"
   data={slim(all, c, fichaHref(lang))}
