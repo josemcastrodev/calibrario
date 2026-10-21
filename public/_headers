@@ -1,0 +1,9 @@
+# Cabeceras de Cloudflare Pages
+
+# La copia en pages.dev no se indexa: la web es calibrario.com
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+# Los recursos con huella en el nombre no cambian nunca
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
