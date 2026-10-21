@@ -79,6 +79,7 @@ export const de: Dict = {
     sourcesLabel: 'Quellen:',
     archivedCopy: 'archivierte Kopie',
     dashNote: 'Ein Strich bedeutet, dass der Hersteller diesen Wert nicht angibt.',
+    discontinuedNote: 'Die Marke stellt dieses Modell nicht mehr her. Amazon hat noch Exemplare, sie können aber ausverkauft sein.',
     caliberDocNote: 'Mit † markierte Werte veröffentlicht die Marke nicht: Sie stammen aus der offiziellen Dokumentation des Kaliberherstellers {x}.',
     caliberDocNoteSpec: 'Mit † markierte Werte veröffentlichen weder die Marke noch der Kaliberhersteller: Sie stammen aus einer technischen Fachquelle, {x}.',
     theCaliber: 'Das Kaliber', rivalsTitle: 'Im Vergleich mit Konkurrenten', rivalsNote: 'Uhren gleichen Stils mit der nächstgelegenen Preisspanne. In Rot der beste Wert jeder Zeile.',

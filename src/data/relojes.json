@@ -137,7 +137,8 @@
     "summary": "Buceo de 200 m con certificación ISO y esfera naranja, con el calibre 8204, que para el segundero y se carga a mano.",
     "verified": false,
     "dataNotes": "Grosor, entre asas y ancho de correa por confirmar en citizenwatch.eu (Amazon indica 24 mm de correa).",
-    "amazonChecked": "2026-10-21"
+    "amazonChecked": "2026-10-21",
+    "discontinued": true
   },
   {
     "id": "citizen-tsuyosa-nj0150-81z",
@@ -769,7 +770,8 @@
         "hacking",
         "handWinding"
       ]
-    }
+    },
+    "discontinued": true
   },
   {
     "id": "tissot-chemin-des-tourelles-powermatic-80",
@@ -823,7 +825,8 @@
         "hacking",
         "handWinding"
       ]
-    }
+    },
+    "discontinued": true
   },
   {
     "id": "tissot-seastar-1000-powermatic-80-40",
@@ -1015,7 +1018,8 @@
     "summary": "Caja de carbono forjado, 300 m y 80 horas de reserva: un deportivo suizo ligero y distinto al resto del catálogo.",
     "verified": false,
     "dataNotes": "Retirado de la web de Tissot. Su ficha archivada (02/2025) da 41 mm, 14,4 mm, 300 m, zafiro, fondo visto, 80 h y correa de caucho azul, pero no menciona el bisel giratorio.",
-    "amazonChecked": "2026-10-21"
+    "amazonChecked": "2026-10-21",
+    "discontinued": true
   },
   {
     "id": "citizen-series-8-870-na1010-84x",
@@ -1060,7 +1064,8 @@
     "sources": [
       "https://web.archive.org/web/20260211183531/https://citizenwatch.eu/en/p/na1010-84x/",
       "https://www.citizenwatch-global.com/support/pdf/0950/e.pdf"
-    ]
+    ],
+    "discontinued": true
   },
   {
     "id": "hamilton-jazzmaster-auto-h42535130",
@@ -1199,7 +1204,8 @@
     "sources": [
       "https://web.archive.org/web/20210606230702/https://www.seikowatches.com/global-en/products/prospex/spb143j1",
       "https://www.seikowatches.com/instructions/html/SEIKO_6R35_D_EN/BONDSYkqbeszsf"
-    ]
+    ],
+    "discontinued": true
   },
   {
     "id": "timex-m79-automatic-tw2w47500",
@@ -1354,8 +1360,9 @@
     "images": [],
     "summary": "Un automático suizo de 51 piezas montado por máquinas, con 90 horas de reserva y fondo transparente, por unos 200 €.",
     "verified": false,
-    "dataNotes": "Grosor, entre asas y ancho de correa por confirmar en swatch.com.",
-    "amazonChecked": "2026-10-21"
+    "dataNotes": "Swatch ya no lo vende en su web. Decisión del dueño (21/10/2026): retirarlo del catálogo cuando Amazon.es se quede sin stock; no hay ningún Sistem51 automático vigente en Amazon.es para sustituirlo.",
+    "amazonChecked": "2026-10-21",
+    "discontinued": true
   },
   {
     "id": "citizen-automatic-nh8350-83l",
@@ -1395,7 +1402,8 @@
     "summary": "Un automático clásico de Citizen con esfera azul de rayos de sol y brazalete de acero por unos 200 €, con un calibre sencillo y robusto.",
     "verified": false,
     "dataNotes": "Entre asas estimado. Comprobar en citizenwatch.eu.",
-    "amazonChecked": "2026-10-21"
+    "amazonChecked": "2026-10-21",
+    "discontinued": true
   },
   {
     "id": "citizen-automatic-nj0190-51e",
@@ -1443,32 +1451,32 @@
     ]
   },
   {
-    "id": "seiko-5-snxs79k1",
+    "id": "seiko-5-sports-skx-38-srpl79k1",
     "brand": "Seiko",
-    "model": "5 Automatic SNXS79",
-    "ref": "SNXS79K1",
-    "asin": "B004YDLF3A",
-    "type": "Vestir",
+    "model": "5 Sports SKX 38 mm",
+    "ref": "SRPL79K1",
+    "asin": "B0FVM149GW",
+    "type": "Buceo",
     "priceRange": [
-      200,
-      235
+      320,
+      370
     ],
-    "caliber": "7S26",
+    "caliber": "4R36",
     "caliberMaker": "Seiko",
     "reserveHours": 41,
     "bph": 21600,
     "crystal": "Hardlex",
-    "waterResistanceM": 30,
-    "diameterMm": 37,
-    "thicknessMm": 12,
-    "lugToLugMm": 42.5,
-    "lugWidthMm": 17,
-    "hacking": false,
-    "handWinding": false,
+    "waterResistanceM": 100,
+    "diameterMm": 38,
+    "thicknessMm": 12.1,
+    "lugToLugMm": 44.2,
+    "lugWidthMm": 20,
+    "hacking": true,
+    "handWinding": true,
     "origin": "Japón",
     "movementOrigin": "Japón",
-    "rotatingBezel": false,
-    "bezelNote": null,
+    "rotatingBezel": true,
+    "bezelNote": "Unidireccional",
     "caseMaterial": "Acero",
     "strap": "Acero",
     "dialColor": "Negro",
@@ -1477,10 +1485,14 @@
     ],
     "exhibitionCaseback": true,
     "images": [],
-    "summary": "El Seiko 5 clásico de 37 mm: pequeño, discreto y con el veterano 7S26, que no para el segundero ni se carga a mano.",
-    "verified": false,
-    "dataNotes": "La ficha de Amazon se titula SNXS73K pero indica SNXS79. Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "summary": "El 5 Sports de aire SKX en 38 mm: bisel giratorio, calibre 4R36 con parada de segundero y 100 m, para muñecas finas.",
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/5sports/srpl79",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-5-sports-srpe55k1",
@@ -1876,7 +1888,8 @@
     "summary": "Un Hamilton de vestir de solo 8,45 mm de grosor gracias al ETA 2892-A2, un calibre plano de 28.800 A/h, con zafiro y esfera blanca.",
     "verified": false,
     "dataNotes": "Hamilton lo marca como colección anterior. Entre asas y fondo por confirmar en hamiltonwatch.com.",
-    "amazonChecked": "2026-10-21"
+    "amazonChecked": "2026-10-21",
+    "discontinued": true
   },
   {
     "id": "hamilton-khaki-king-h64455133",
@@ -2024,7 +2037,8 @@
         "hacking",
         "handWinding"
       ]
-    }
+    },
+    "discontinued": true
   },
   {
     "id": "tissot-carson-premium-powermatic-80",
@@ -2078,7 +2092,8 @@
         "hacking",
         "handWinding"
       ]
-    }
+    },
+    "discontinued": true
   },
   {
     "id": "citizen-promaster-fujitsubo-nb6025-59h",
@@ -2589,26 +2604,26 @@
     "amazonChecked": "2026-10-21"
   },
   {
-    "id": "victorinox-airboss-mechanical-241888",
+    "id": "victorinox-air-pro-automatic-242004",
     "brand": "Victorinox",
-    "model": "Airboss Mechanical",
-    "ref": "241888",
-    "asin": "B07VPDZMMM",
+    "model": "Air Pro Automatic",
+    "ref": "242004",
+    "asin": "B0FTYHMQV7",
     "type": "Piloto",
     "priceRange": [
-      620,
-      680
+      1390,
+      1500
     ],
-    "caliber": "ETA 2836-2",
-    "caliberMaker": "ETA",
-    "reserveHours": 38,
+    "caliber": "Sellita SW330-2",
+    "caliberMaker": "Sellita",
+    "reserveHours": 56,
     "bph": 28800,
     "crystal": "Zafiro",
-    "waterResistanceM": 100,
-    "diameterMm": 42,
-    "thicknessMm": 11,
-    "lugToLugMm": 50,
-    "lugWidthMm": 22,
+    "waterResistanceM": 200,
+    "diameterMm": 43,
+    "thicknessMm": 13,
+    "lugToLugMm": null,
+    "lugWidthMm": 21,
     "hacking": true,
     "handWinding": true,
     "origin": "Suiza",
@@ -2619,14 +2634,18 @@
     "strap": "Acero",
     "dialColor": "Negro",
     "complications": [
-      "Día y fecha"
+      "Fecha",
+      "GMT"
     ],
-    "exhibitionCaseback": true,
+    "exhibitionCaseback": false,
     "images": [],
-    "summary": "Un aviador suizo de 42 mm con día y fecha, calibre ETA de 28.800 A/h, zafiro y brazalete de acero.",
+    "summary": "Un aviador suizo de 43 mm con GMT para tres husos horarios, calibre Sellita de 56 horas, zafiro y 200 m.",
     "verified": false,
-    "dataNotes": "Calibre y entre asas por confirmar en victorinox.com.",
-    "amazonChecked": "2026-10-21"
+    "dataNotes": "Comprobado en victorinox.com: Sellita SW330-2 con 56 h, GMT, 43 mm, 13 mm, 21 mm entre asas, 200 m, zafiro, fondo cerrado y brazalete de acero. Falta la documentación de Sellita (frecuencia y parada de segundero); su web está en mantenimiento.",
+    "amazonChecked": "2026-10-21",
+    "sources": [
+      "https://www.victorinox.com/en/Products/Watches/Men%27s-Watches/Air-Pro-Automatic/p/242004/"
+    ]
   },
   {
     "id": "laco-paderborn-861749",

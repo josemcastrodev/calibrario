@@ -39,6 +39,8 @@ const reloj = z.object({
   amazonChecked: z.string().optional(),
   /** Fecha en que se comprobaron los datos con la web oficial del fabricante. */
   verifiedAt: z.string().optional(),
+  /** La marca ya no lo fabrica, pero Amazon.es aún tiene unidades. Se retira cuando se agote. */
+  discontinued: z.boolean().optional(),
   /** Páginas oficiales (o su copia archivada) de las que salen los datos. */
   sources: z.array(z.string().url()).optional(),
   /** Datos que la marca no publica y salen de la documentación oficial del fabricante del calibre. */

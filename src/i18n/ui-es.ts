@@ -155,6 +155,7 @@ export const uiEs = {
   sourcesLabel: 'Fuentes:',
   archivedCopy: 'copia archivada',
   dashNote: 'Un guion significa que el fabricante no publica ese dato.',
+  discontinuedNote: 'La marca ya no fabrica este modelo. Amazon todavía tiene unidades, pero puede agotarse.',
   caliberDocNote: 'Los datos marcados con † no los publica la marca: salen de la documentación oficial del fabricante del calibre, {x}.',
   caliberDocNoteSpec: 'Los datos marcados con † no los publican ni la marca ni el fabricante del calibre: salen de una fuente técnica especializada, {x}.',
   theCaliber: 'El calibre',

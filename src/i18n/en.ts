@@ -79,6 +79,7 @@ export const en: Dict = {
     sourcesLabel: 'Sources:',
     archivedCopy: 'archived copy',
     dashNote: 'A dash means the manufacturer does not publish that figure.',
+    discontinuedNote: 'The brand no longer makes this model. Amazon still has stock, but it may sell out.',
     caliberDocNote: 'Figures marked † are not published by the brand: they come from the official documentation of the movement maker, {x}.',
     caliberDocNoteSpec: 'Figures marked † are published neither by the brand nor by the movement maker: they come from a specialist technical source, {x}.',
     theCaliber: 'The movement', rivalsTitle: 'Against its rivals', rivalsNote: 'Watches of the same style with the nearest price band. In red, the best figure in each row.',

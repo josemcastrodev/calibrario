@@ -85,6 +85,7 @@ const checked = r.amazonChecked ? new Date(`${r.amazonChecked}T12:00:00Z`).toLoc
       <div class="hd"><span class="nm">{c.name(r)}</span><span class="pr">{f.price(r.priceRange)}</span></div>
       <div class="ref">{existeEn(avail, `marca:${marcaDe(r).slug}`) ? <a href={H(`marca:${marcaDe(r).slug}`)}>{r.brand}</a> : r.brand} · {t.ref} {r.ref} · {c.tr('type', r.type)} · {c.tr('origin', r.origin)}</div>
       <p class="gama">{t.gamaNote}</p>
+      {r.discontinued && <p class="gama"><strong>{t.discontinuedNote}</strong></p>}
       <a class="btn block" href={affiliateUrl(r)} rel="sponsored noopener">{t.buy}</a>
       <ul>
         <li>{resumen}</li>
