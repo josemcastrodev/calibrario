@@ -1951,7 +1951,7 @@
     "waterResistanceM": 100,
     "diameterMm": 40,
     "thicknessMm": 12.95,
-    "lugToLugMm": 47,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1965,11 +1965,11 @@
     "complications": [
       "Fecha"
     ],
-    "exhibitionCaseback": false,
+    "exhibitionCaseback": null,
     "images": [],
     "summary": "Estética de buceo en 40 mm con calibre de 80 horas y zafiro; ojo, solo tiene 100 m de hermeticidad.",
     "verified": false,
-    "dataNotes": "Amazon indica cristal mineral; Hamilton publica zafiro. Entre asas estimado.",
+    "dataNotes": "Ficha oficial archivada de hamiltonwatch.com (08/2025): H-10, 80 h, zafiro, 100 m, 40 mm, 12,95 mm, 20 mm entre asas, brazalete. Falta que Hamilton confirme el bisel giratorio y el tipo de fondo.",
     "amazonChecked": "2026-10-21"
   },
   {
