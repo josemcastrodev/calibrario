@@ -50,17 +50,17 @@
       210,
       240
     ],
-    "caliber": "8203",
+    "caliber": "8204",
     "caliberMaker": "Citizen",
     "reserveHours": 42,
     "bph": 21600,
     "crystal": "Mineral",
     "waterResistanceM": 200,
     "diameterMm": 42,
-    "thicknessMm": 12.8,
-    "lugToLugMm": 47,
+    "thicknessMm": 12,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
-    "hacking": false,
+    "hacking": true,
     "handWinding": true,
     "origin": "Japón",
     "movementOrigin": "Japón",
@@ -74,10 +74,15 @@
     ],
     "exhibitionCaseback": false,
     "images": [],
-    "summary": "El Fugu clásico: bisel dentado, corona a las 8 y 200 m con certificación ISO, con un calibre sin parada de segundero.",
-    "verified": false,
-    "dataNotes": "Parada de segundero del 8203 y grosor por confirmar en citizenwatch-global.com.",
-    "amazonChecked": "2026-10-21"
+    "summary": "El Fugu clásico: bisel dentado, corona a las 8 y 200 m con certificación ISO, con el calibre 8204, que para el segundero y se carga a mano.",
+    "verified": true,
+    "dataNotes": "La ficha europea vigente es la NY0040-09EC e indica el calibre 8204, que para el segundero. Citizen no publica el entre asas.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://citizenwatch.eu/en/p/ny0040-09ec/",
+      "https://www.citizenwatch-global.com/support/pdf/8203_8204/e.pdf"
+    ]
   },
   {
     "id": "citizen-promaster-diver-ny0120-01z",
@@ -114,7 +119,7 @@
     ],
     "exhibitionCaseback": false,
     "images": [],
-    "summary": "Buceo de 200 m con certificación ISO y esfera naranja, con un calibre 8204 que sí para el segundero, a diferencia del 8203 del Fugu.",
+    "summary": "Buceo de 200 m con certificación ISO y esfera naranja, con el calibre 8204, que para el segundero y se carga a mano.",
     "verified": false,
     "dataNotes": "Grosor, entre asas y ancho de correa por confirmar en citizenwatch.eu (Amazon indica 24 mm de correa).",
     "amazonChecked": "2026-10-21"
@@ -137,8 +142,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 40,
-    "thicknessMm": 11.7,
-    "lugToLugMm": 46,
+    "thicknessMm": null,
+    "lugToLugMm": null,
     "lugWidthMm": null,
     "hacking": true,
     "handWinding": true,
@@ -155,9 +160,15 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Brazalete integrado, zafiro y esfera de color por unos 250 €: la alternativa japonesa al Tissot PRX.",
-    "verified": false,
-    "dataNotes": "Tipo de cristal (zafiro o mineral), color de esfera del sufijo 81Z y grosor por confirmar en citizenwatch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Citizen no publica grosor ni entre asas. La parada de segundero consta en la ficha de Citizen EE. UU. del mismo modelo (NJ0150-56Z).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://citizenwatch.eu/en/p/nj0150-81z/",
+      "https://www.citizenwatch.com/us/en/product/NJ0150-56Z",
+      "https://www.citizenwatch-global.com/support/pdf-guide/41xx_820x_901x/e.pdf"
+    ]
   },
   {
     "id": "orient-bambino-v2-fac00009w0",
@@ -258,7 +269,7 @@
     "waterResistanceM": 100,
     "diameterMm": 39.4,
     "thicknessMm": 13.2,
-    "lugToLugMm": 46.8,
+    "lugToLugMm": 48.1,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -267,7 +278,7 @@
     "rotatingBezel": false,
     "bezelNote": null,
     "caseMaterial": "Acero",
-    "strap": "Nailon",
+    "strap": "Acero",
     "dialColor": "Negro",
     "complications": [
       "Día y fecha"
@@ -275,9 +286,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un 5 Sports de campo en 39,4 mm que cabe en muñecas pequeñas y lleva el mismo 4R36 que los modelos de buceo.",
-    "verified": false,
-    "dataNotes": "Color de correa y esfera por confirmar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/5sports/srpg27",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-5-sports-srpd55k1",
@@ -315,9 +330,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El 5 Sports clásico: estética de buceo, 100 m, calibre 4R36 y un entre asas corto que lo hace llevable.",
-    "verified": false,
-    "dataNotes": "Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/5sports/srpd55",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "orient-kamasu-ra-aa0003r",
@@ -454,7 +473,7 @@
     "waterResistanceM": 200,
     "diameterMm": 45,
     "thicknessMm": 13.4,
-    "lugToLugMm": 47.7,
+    "lugToLugMm": null,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -471,9 +490,14 @@
     "exhibitionCaseback": false,
     "images": [],
     "summary": "Buceo con certificación ISO 6425 y caja cojín: mide 45 mm pero el entre asas de 47,7 mm lo hace sorprendentemente llevable.",
-    "verified": false,
-    "dataNotes": "Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Seiko no publica el entre asas de este modelo.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/prospex/srpe99",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-presage-cocktail-time-srpe19j1",
@@ -494,7 +518,7 @@
     "waterResistanceM": 50,
     "diameterMm": 40.5,
     "thicknessMm": 11.8,
-    "lugToLugMm": 47.3,
+    "lugToLugMm": 47.5,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -511,9 +535,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Esfera azul con acabado de rayos de sol, inspirada en un cóctel, sobre el calibre 4R35 de siempre y con brazalete de acero.",
-    "verified": false,
-    "dataNotes": "Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/presage/srpe19j1",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-5-sports-gmt-ssk033k1",
@@ -552,9 +580,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un GMT automático asequible: aguja de 24 horas y bisel giratorio para seguir una segunda zona horaria.",
-    "verified": false,
-    "dataNotes": "Amazon indica cristal de zafiro; Seiko publica Hardlex para la serie. Color de esfera por confirmar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/5sports/ssk033",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R34_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-presage-cocktail-time-ssa441j1",
@@ -575,7 +607,7 @@
     "waterResistanceM": 50,
     "diameterMm": 40.5,
     "thicknessMm": 11.8,
-    "lugToLugMm": 47.3,
+    "lugToLugMm": 47.5,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -592,9 +624,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "La esfera de cóctel de Seiko con una ventana al volante: se ve latir el calibre sin dar la vuelta al reloj.",
-    "verified": false,
-    "dataNotes": "Entre asas tomado del Cocktail Time de 40,5 mm. Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/presage/ssa441j1",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "glycine-airman-double-twelve-gl0552",
@@ -776,7 +812,7 @@
     "diameterMm": 40.8,
     "thicknessMm": 13,
     "lugToLugMm": 47,
-    "lugWidthMm": null,
+    "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
     "origin": "Japón",
@@ -793,9 +829,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un GMT de inspiración años sesenta con cristal abombado, aguja de 24 horas y correa de piel: el viajero elegante de Seiko.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado; ancho de correa y si el bisel gira, por confirmar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/presage/ssk013j1",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R34_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "hamilton-khaki-field-auto-h70515137",
@@ -894,17 +934,17 @@
     "bph": 28800,
     "crystal": "Zafiro",
     "waterResistanceM": 100,
-    "diameterMm": 40.8,
-    "thicknessMm": 12.3,
-    "lugToLugMm": 46.8,
-    "lugWidthMm": 22,
+    "diameterMm": 40,
+    "thicknessMm": 11.7,
+    "lugToLugMm": null,
+    "lugWidthMm": null,
     "hacking": true,
     "handWinding": true,
     "origin": "Japón",
     "movementOrigin": "Japón",
     "rotatingBezel": false,
     "bezelNote": "Bisel octogonal fijo",
-    "caseMaterial": "Acero con tratamiento Duratect",
+    "caseMaterial": "Acero",
     "strap": "Acero (integrado)",
     "dialColor": "Azul",
     "complications": [
@@ -913,9 +953,14 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Calibre 0950 a 28.800 A/h, resistente al magnetismo, con acero endurecido Duratect y zafiro antirreflejos: la mecánica alta de Citizen.",
-    "verified": false,
-    "dataNotes": "Grosor y entre asas por confirmar en citizenwatch.eu.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Datos de la ficha oficial europea archivada (02/2026). Citizen no publica el entre asas.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20260211183531/https://citizenwatch.eu/en/p/na1010-84x/",
+      "https://www.citizenwatch-global.com/support/pdf/0950/e.pdf"
+    ]
   },
   {
     "id": "hamilton-jazzmaster-auto-h42535130",
@@ -1017,7 +1062,7 @@
     "diameterMm": 40.5,
     "thicknessMm": 13.2,
     "lugToLugMm": 47.6,
-    "lugWidthMm": 20,
+    "lugWidthMm": null,
     "hacking": true,
     "handWinding": true,
     "origin": "Japón",
@@ -1033,9 +1078,14 @@
     "exhibitionCaseback": false,
     "images": [],
     "summary": "El primer buceo de Seiko, de 1965, reeditado en 40,5 mm con zafiro, 200 m y el 6R35 de 70 horas.",
-    "verified": false,
-    "dataNotes": "Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Modelo retirado de la web de Seiko: datos de su página oficial archivada (06/2021). Seiko no publicaba el ancho entre asas.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20210606230702/https://www.seikowatches.com/global-en/products/prospex/spb143j1",
+      "https://www.seikowatches.com/instructions/html/SEIKO_6R35_D_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "timex-m79-automatic-tw2w47500",
@@ -1246,14 +1296,14 @@
     ],
     "caliber": "8210",
     "caliberMaker": "Citizen",
-    "reserveHours": 40,
+    "reserveHours": 42,
     "bph": 21600,
     "crystal": "Mineral",
     "waterResistanceM": 100,
     "diameterMm": 40,
-    "thicknessMm": 12.2,
-    "lugToLugMm": 46,
-    "lugWidthMm": 20,
+    "thicknessMm": 12,
+    "lugToLugMm": null,
+    "lugWidthMm": null,
     "hacking": true,
     "handWinding": true,
     "origin": "Japón",
@@ -1269,9 +1319,14 @@
     "exhibitionCaseback": null,
     "images": [],
     "summary": "Un Citizen de estilo campo con 100 m, parada de segundero y carga manual por menos de 200 €.",
-    "verified": false,
-    "dataNotes": "Calibre, entre asas y fondo por confirmar en citizenwatch.eu.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Reserva de 42 h según su ficha europea. Citizen no publica entre asas ni ancho de correa. La parada de segundero del calibre 8210 consta en la ficha de Citizen EE. UU. del Tsuyosa.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://citizenwatch.eu/en/p/nj0190-51e/",
+      "https://www.citizenwatch.com/us/en/product/NJ0150-56Z"
+    ]
   },
   {
     "id": "seiko-5-snxs79k1",
@@ -1331,8 +1386,8 @@
     "crystal": "Hardlex",
     "waterResistanceM": 100,
     "diameterMm": 40,
-    "thicknessMm": 13.4,
-    "lugToLugMm": 44.5,
+    "thicknessMm": 11.5,
+    "lugToLugMm": 44.6,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1349,9 +1404,13 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El 5 Sports en versión urbana: 40 mm, bisel fijo y brazalete de acero, con el mismo 4R36 y 100 m que los modelos de buceo.",
-    "verified": false,
-    "dataNotes": "Amazon indica 30 m; Seiko publica 100 m para la serie. Entre asas estimado.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/5sports/srpe55",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-prospex-king-turtle-srpk01k1",
@@ -1389,9 +1448,13 @@
     "exhibitionCaseback": false,
     "images": [],
     "summary": "El Turtle mejorado: cristal de zafiro con lupa para la fecha y bisel de cerámica, sobre la misma caja cojín de 45 mm y 200 m.",
-    "verified": false,
-    "dataNotes": "Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/prospex/srpk01",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "seiko-prospex-king-samurai-srpj93k1",
@@ -1412,7 +1475,7 @@
     "waterResistanceM": 200,
     "diameterMm": 43.8,
     "thicknessMm": 12.8,
-    "lugToLugMm": 48,
+    "lugToLugMm": 48.7,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -1421,7 +1484,7 @@
     "rotatingBezel": true,
     "bezelNote": "Unidireccional, inserto de cerámica",
     "caseMaterial": "Acero",
-    "strap": "Acero",
+    "strap": "Silicona",
     "dialColor": "Azul",
     "complications": [
       "Fecha"
@@ -1429,9 +1492,13 @@
     "exhibitionCaseback": false,
     "images": [],
     "summary": "Un buceo de líneas angulosas con zafiro, bisel de cerámica y 200 m; más plano y afilado que el Turtle.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en seikowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.seikowatches.com/uk-en/products/prospex/srpj93",
+      "https://www.seikowatches.com/instructions/html/SEIKO_4R35_4R36_4R37_4R38_4R39_4R71_4R72_EN/BONDSYkqbeszsf"
+    ]
   },
   {
     "id": "bulova-military-heritage-hack-96a246",
@@ -1528,9 +1595,9 @@
     "bph": 21600,
     "crystal": "Mineral",
     "waterResistanceM": 30,
-    "diameterMm": 42,
-    "thicknessMm": 14,
-    "lugToLugMm": 48,
+    "diameterMm": 41.5,
+    "thicknessMm": 14.2,
+    "lugToLugMm": 47,
     "lugWidthMm": 21,
     "hacking": true,
     "handWinding": true,
@@ -1548,9 +1615,14 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El Bambino con indicador de sol y luna: esfera abombada, 42 mm y un calibre propio de Orient que muestra si es de día o de noche.",
-    "verified": false,
-    "dataNotes": "Grosor y entre asas por confirmar en orient-watch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Orient no responde desde España: datos de sus fichas oficiales archivadas (2023 y 06/2026).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20260612081828/https://orient-watch.com/en/orient/collection/classic/classic-and-simple-style-day-and-night/RA-AK0803Y/",
+      "https://web.archive.org/web/20231001162133/https://orient-watch.com/Collections/ORIENT/Classic/ORIENT%3A-Mechanical-Classic-Watch/p/RA-AK0803Y"
+    ]
   },
   {
     "id": "orient-star-diver-re-au0306l",
@@ -1571,7 +1643,7 @@
     "waterResistanceM": 200,
     "diameterMm": 43.6,
     "thicknessMm": 14,
-    "lugToLugMm": 50,
+    "lugToLugMm": 51.1,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -1589,9 +1661,14 @@
     "exhibitionCaseback": false,
     "images": [],
     "summary": "El buceo de la gama alta de Orient: 200 m, zafiro e indicador de reserva de marcha en la esfera, con 50 horas de autonomía.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en orient-watch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Orient no responde desde España: datos de sus fichas oficiales archivadas (2020 y 03/2026).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20260306182035/https://orient-watch.com/en/orientstar/collection/sports/diver/RE-AU0306L/",
+      "https://web.archive.org/web/20200803174645/https://orient-watch.com/Collections/ORIENT-STAR/Sports/ORIENT-STAR%3A-Mechanical-Sports-Watch/p/RE-AU0306L"
+    ]
   },
   {
     "id": "hamilton-khaki-field-auto-38-h70455533",
@@ -1851,8 +1928,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 200,
     "diameterMm": 41,
-    "thicknessMm": 12,
-    "lugToLugMm": 46,
+    "thicknessMm": null,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1869,9 +1946,15 @@
     "exhibitionCaseback": false,
     "images": [],
     "summary": "El Fujitsubo de titanio: un buceo ligero de 41 mm con zafiro, 200 m y un calibre Citizen de 28.800 A/h.",
-    "verified": false,
-    "dataNotes": "Grosor, entre asas y ancho de correa por confirmar en citizenwatch.eu.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Citizen no publica grosor ni entre asas.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://citizenwatch.eu/en/p/nb6025-59h/",
+      "https://www.citizenwatch.com/us/en/product/NB6025-59H",
+      "https://www.citizenwatch-global.com/support/pdf/9051/e.pdf"
+    ]
   },
   {
     "id": "citizen-series-8-880-gmt-nb6036-52n",
@@ -1886,14 +1969,14 @@
     ],
     "caliber": "9054",
     "caliberMaker": "Citizen",
-    "reserveHours": 42,
+    "reserveHours": 50,
     "bph": 28800,
     "crystal": "Zafiro",
     "waterResistanceM": 100,
     "diameterMm": 41,
-    "thicknessMm": 13,
-    "lugToLugMm": 47,
-    "lugWidthMm": 20,
+    "thicknessMm": null,
+    "lugToLugMm": null,
+    "lugWidthMm": null,
     "hacking": true,
     "handWinding": true,
     "origin": "Japón",
@@ -1910,9 +1993,14 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "La Series 8 con segunda zona horaria: GMT de 41 mm, calibre 9054 a 28.800 A/h y resistencia al magnetismo.",
-    "verified": false,
-    "dataNotes": "Grosor, entre asas, ancho de correa y fondo por confirmar en citizenwatch.eu.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "El calibre 9054 da unas 50 h y permite mover la aguja de las horas sin parar el reloj (GMT de viaje). Citizen no publica grosor ni entre asas.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.citizenwatch.com/us/en/product/NB6036-52N",
+      "https://www.citizenwatch-global.com/support/pdf/9054/e.pdf"
+    ]
   },
   {
     "id": "junghans-max-bill-automatic-027-3502-02",

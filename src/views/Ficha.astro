@@ -25,6 +25,12 @@ interface Props { c: Ctx; id: string }
 const { c, id } = Astro.props;
 const { t, f, lang, d } = c;
 const H = (k: string) => href(lang, k);
+/** «seikowatches.com» o «seikowatches.com (copia archivada)» para cada fuente. */
+const fuente = (u: string) => {
+  const m = u.match(/^https?:\/\/web\.archive\.org\/web\/\d+\/(https?:\/\/[^/]+)/);
+  const host = (m ? new URL(m[1]) : new URL(u)).hostname.replace(/^www\./, '');
+  return m ? `${host} (${t.archivedCopy})` : host;
+};
 const all = await getRelojes();
 const r = all.find((x) => x.id === id) as Reloj;
 const riv = rivals(all, r, 2);
@@ -104,7 +110,14 @@ const checked = r.amazonChecked ? new Date(`${r.amazonChecked}T12:00:00Z`).toLoc
       <div><h3>{g}</h3><table class="data"><tbody>{keys.map((k) => <tr><th scope="row">{d.labels[k]}</th><td>{specValue(r, k, c)}</td></tr>)}</tbody></table></div>
     ))}
   </section>
-  <p class="note center" style="padding:0 24px">{r.verified ? t.verified : `${t.pending}${lang === 'es' && r.dataNotes ? ` ${r.dataNotes}` : ''}`}</p>
+  {r.verified && r.verifiedAt ? (
+    <div class="note center sources" style="padding:0 24px">
+      <p>{fill(t.verifiedOn, { d: new Date(r.verifiedAt + 'T12:00:00Z').toLocaleDateString(LOCALE[lang], { day: 'numeric', month: 'long', year: 'numeric' }) })} {t.dashNote}{lang === 'es' && r.dataNotes ? ` ${r.dataNotes}` : ''}</p>
+      {r.sources && r.sources.length > 0 && <p>{t.sourcesLabel} {r.sources.map((u, i) => <>{i > 0 && ', '}<a href={u} rel="nofollow noopener" target="_blank">{fuente(u)}</a></>)}</p>}
+    </div>
+  ) : (
+    <p class="note center" style="padding:0 24px">{r.verified ? t.verified : `${t.pending}${lang === 'es' && r.dataNotes ? ` ${r.dataNotes}` : ''}`}</p>
+  )}
 
   {fam && famT && (
     <>

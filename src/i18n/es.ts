@@ -208,7 +208,7 @@ export const es: Dict = {
         { p: 'Permite dar cuerda girando la corona. Es útil para poner en marcha un automático que se ha parado sin tener que agitarlo, o para darle unas horas extra antes de un día de poco movimiento. Unas veinte o treinta vueltas suelen bastar para arrancarlo.' },
         { h2: 'Los que no las tienen' },
         { gen: 'sinParada' },
-        { p: 'Un caso curioso es el de Citizen: el Promaster Fugu lleva el calibre 8203, que no para el segundero, y el Promaster Diver el 8204, que sí. Por fuera parecen hermanos. Más detalles en la página de la [[calibre:citizen-82|serie 82 de Citizen]].' },
+        { p: 'Un caso curioso es el de Citizen: en su serie 82, el 8203 no para el segundero y el 8204 sí, y los relojes que los llevan pueden ser idénticos por fuera. Por eso conviene mirar el calibre y no solo el modelo. Más detalles en la página de la [[calibre:citizen-82|serie 82 de Citizen]].' },
       ],
       faqs: [
         ['¿Es grave que un reloj no tenga parada de segundero?', 'No afecta a su funcionamiento, solo a la comodidad: no podrás ajustarlo al segundo exacto. Para la mayoría de la gente es un detalle menor.'],

@@ -37,6 +37,10 @@ const reloj = z.object({
   dataNotes: z.string().optional(),
   /** Fecha en que se comprobó a mano que el ASIN tiene stock y botón de compra en Amazon.es. */
   amazonChecked: z.string().optional(),
+  /** Fecha en que se comprobaron los datos con la web oficial del fabricante. */
+  verifiedAt: z.string().optional(),
+  /** Páginas oficiales (o su copia archivada) de las que salen los datos. */
+  sources: z.array(z.string().url()).optional(),
 });
 
 export type Reloj = z.infer<typeof reloj>;
