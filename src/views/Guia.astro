@@ -1,0 +1,40 @@
+---
+// Guía: titular, foto a sangre, texto del diccionario con sus tablas calculadas y, al final, las demás guías.
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Foto from '../components/Foto.astro';
+import Faq from '../components/Faq.astro';
+import Rich from '../components/Rich.astro';
+import FitBand from '../components/FitBand.astro';
+import type { Ctx, GuiaKey } from '../i18n/types';
+import { GUIAS } from '../data/guias';
+import { AMBIENTE, txt } from '../lib/photos';
+import { getRelojes, slim } from '../lib/watches';
+import { breadcrumbLd, faqLd, articleLd } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx; gkey: GuiaKey }
+const { c, gkey } = Astro.props;
+const { t, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const g = d.guias[gkey];
+const heroF = AMBIENTE[GUIAS.find((x) => x.key === gkey)!.hero];
+const hero = txt(heroF, c);
+const path = H(`guia:${gkey}`);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navGuides, H('guias')], [g.h1, path]];
+const conCalculador = gkey === 'muneca';
+const r0 = all.find((r) => r.id === 'seiko-prospex-turtle-srpe99k1') ?? all[0];
+---
+<Base c={c} pageKey={`guia:${gkey}`} title={`${g.title} | Calibrario`} description={g.description} current="guias" data={conCalculador ? slim(all, c, fichaHref(lang)) : undefined} jsonld={[articleLd(g.h1, g.description, path, c), breadcrumbLd(crumbs), ...(g.faqs.length ? [faqLd(g.faqs)] : [])]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display" style={g.h1.length > 26 ? 'font-size:clamp(32px,4.8vw,72px)' : undefined}>{g.h1}</h1>
+    <p class="lead">{g.lead}</p>
+  </section>
+  <section class="hero short" aria-label={hero.alt}><Foto file={heroF.file} alt={hero.alt} sizes="100vw" eager /></section>
+  <article class="prose" style="padding-top:72px"><Rich blocks={g.body} c={c} all={all} /></article>
+  {conCalculador && r0 && <FitBand r={r0} c={c} pick={all} title={t.fitTry} />}
+  {g.faqs.length > 0 && <Faq faqs={g.faqs} c={c} />}
+  <h2 class="label">{t.moreGuides}</h2>
+  <nav class="links" aria-label={t.moreGuides}>{GUIAS.filter((x) => x.key !== gkey).map((x) => <a class="link" href={H(`guia:${x.key}`)}>{d.guias[x.key].h1}</a>)}</nav>
+</Base>

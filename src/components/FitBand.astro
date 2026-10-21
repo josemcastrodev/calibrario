@@ -1,0 +1,38 @@
+---
+// Banda roja «¿Te cabe en la muñeca?»: dibujo a escala en blanco y el cálculo con el contorno de la muñeca.
+// Con `pick`, el visitante elige el reloj (para la guía de tallas).
+import type { Reloj } from '../content.config';
+import type { Ctx } from '../i18n/types';
+import { drawing, scaleRings } from '../lib/drawing';
+import { fill } from '../i18n';
+interface Props { r: Reloj; c: Ctx; rings?: Reloj[]; pick?: Reloj[]; h?: 'h1' | 'h2'; title?: string }
+const { r, c, rings, pick, h = 'h2', title = c.t.fitH } = Astro.props;
+const H = h;
+const t = c.t;
+---
+<section class="redband fit" id="muneca" data-fit={r.id}>
+  <H class="display">{title}</H>
+  <p class="lead">{t.fitLead}</p>
+  {pick && <label class="sr-only" for="fit-pick">{t.watch}</label>}
+  {pick && (
+    <select id="fit-pick" data-fit-pick>
+      {pick.map((x) => <option value={x.id} selected={x.id === r.id}>{c.name(x)}</option>)}
+    </select>
+  )}
+  <div class="row2">
+    {pick
+      ? <div>{pick.map((x) => <div data-fit-drawing={x.id} hidden={x.id !== r.id} set:html={drawing(x, c, { s: 4.6, ink: '#fff', id: `fit-${x.id}` })} />)}</div>
+      : <div set:html={drawing(r, c, { s: 4.6, ink: '#fff', id: `fit-${r.id}` })} />}
+    <div>
+      <label for="cm" class="ui" style="display:block">{t.fitLabel}{t.colon}<output data-fit-cm>17</output> cm</label>
+      <input id="cm" type="range" min="14" max="21" step="0.5" value="17" />
+      <div class="fitbar" data-fit-bar aria-hidden="true"></div>
+      <p data-fit-out aria-live="polite">{fill(t.fitInit, { cm: c.f.dec(17), w: c.f.int(56) })}</p>
+      {rings && <Fragment set:html={scaleRings(rings, c, { s: 3.4, ink: '#fff' })} />}
+    </div>
+  </div>
+</section>
+<style>
+  .fit select{appearance:none;-webkit-appearance:none;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23fff' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat right 14px center;border:1px solid #fff;border-radius:1px;color:#fff;font-family:var(--sans);font-size:16px;min-height:52px;padding:0 40px 0 14px;width:100%}
+  .fit select option{color:#333}
+</style>

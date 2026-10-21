@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Foto from '../components/Foto.astro';
+import WatchCard from '../components/WatchCard.astro';
+import CompareTable from '../components/CompareTable.astro';
+import Faq from '../components/Faq.astro';
+import type { Reloj } from '../content.config';
+import type { Ctx } from '../i18n/types';
+import { fill } from '../i18n';
+import { getRelojes } from '../lib/watches';
+import { FAMILIAS, type Familia } from '../data/calibres';
+import { AMBIENTE, txt } from '../lib/photos';
+import { breadcrumbLd, faqLd, itemListLd } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx; slug: string }
+const { c, slug } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const fam = FAMILIAS.find((x) => x.slug === slug) as Familia;
+const tx = d.calibres[fam.slug]!;
+const list: Reloj[] = all.filter((r) => fam.match(r.caliber));
+const otras = FAMILIAS.filter((x) => x.slug !== fam.slug && all.some((r) => x.match(r.caliber)));
+const rng = (ns: number[], u: string) => (Math.min(...ns) === Math.max(...ns) ? `${f.int(ns[0])}${u}` : `${fill(t.rangeTo, { a: f.int(Math.min(...ns)), b: f.int(Math.max(...ns)) })}${u}`);
+const siempre = (k: 'hacking' | 'handWinding') => (list.every((r) => r[k]) ? f.bool(true) : list.some((r) => r[k]) ? t.byVersion : f.bool(false));
+const barato = [...list].sort((x, y) => x.priceRange[0] - y.priceRange[0])[0];
+const faqs = d.gen.calibreFaqs(tx.nombre, list, c);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navCalibers, H('calibres')], [tx.nombre, H(`calibre:${fam.slug}`)]];
+const draft = list.some((r) => !r.verified);
+const hero = txt(AMBIENTE.movement, c);
+---
+<Base c={c} pageKey={`calibre:${fam.slug}`} title={fill(t.calPageTitle, { x: tx.nombre })} description={fill(t.calPageDesc, { x: tx.resumen })} current="calibres" noindex={draft} jsonld={[breadcrumbLd(crumbs), itemListLd(list, fichaHref(lang), c), faqLd(faqs)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display" style={tx.nombre.length > 20 ? 'font-size:clamp(32px,4.6vw,68px)' : undefined}>{tx.nombre}</h1>
+    <p class="lead">{tx.resumen}</p>
+  </section>
+  <section class="hero short" aria-label={hero.alt}><Foto file={AMBIENTE.movement.file} alt={hero.alt} sizes="100vw" eager /></section>
+
+  <h2 class="label">{t.inFigures}</h2>
+  <section class="figs">
+    <div><b>{rng(list.map((r) => r.reserveHours), ' h')}</b><span>{t.figReserve}</span></div>
+    <div><b>{rng(list.map((r) => r.bph), '')}</b><span>{t.figBph}</span></div>
+    <div><b>{siempre('hacking')}</b><span>{t.figHack}</span></div>
+    <div><b>{siempre('handWinding')}</b><span>{t.figWind}</span></div>
+    <div><b>{list.length}</b><span>{t.figInCat}</span></div>
+    <div><b>{f.eur(barato.priceRange[0])}</b><span>{t.figFrom}</span></div>
+  </section>
+
+  <h2 class="label">{t.whatIs}</h2>
+  <section class="prose">
+    {tx.texto.map((p) => <p>{p}</p>)}
+    <p><strong>{tx.paraQuien}</strong></p>
+    <p class="note">{fill(draft ? t.makerIsDraft : t.makerIs, { x: tx.fabricante })}</p>
+  </section>
+
+  <h2 class="label">{t.withIt}</h2>
+  <section class="catalog"><div class="grid">{list.map((r) => <WatchCard r={r} c={c} />)}</div></section>
+
+  {list.length >= 2 && list.length <= 3 && (
+    <>
+      <h2 class="label">{t.compared}</h2>
+      <section class="cmp"><CompareTable list={list} c={c} buy /></section>
+    </>
+  )}
+
+  <Faq faqs={faqs} c={c} />
+
+  <h2 class="label">{t.otherCalibers}</h2>
+  <nav class="links" aria-label={t.otherCalibers}>{otras.map((x) => <a class="link" href={H(`calibre:${x.slug}`)}>{d.calibres[x.slug]!.nombre}</a>)}</nav>
+</Base>

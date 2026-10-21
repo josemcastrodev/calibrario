@@ -1,0 +1,91 @@
+---
+// Pinta los bloques de texto del diccionario (guías y páginas). Las tablas y listas generadas se
+// calculan aquí con los relojes publicados, para que siempre cuadren con el catálogo.
+import type { Reloj } from '../content.config';
+import type { Block, Ctx } from '../i18n/types';
+import { inline } from '../lib/rich';
+import { disponibles, href, fichaKey } from '../lib/routes';
+import { mid } from '../lib/format';
+interface Props { blocks: Block[]; c: Ctx; all: Reloj[] }
+const { blocks, c, all } = Astro.props;
+const avail = await disponibles();
+const t = c.t, f = c.f, L = c.lang;
+const I = (s: string) => inline(s, L, avail);
+const link = (r: Reloj) => `<a href="${href(L, fichaKey(r))}">${c.name(r)}</a>`;
+const links = (list: Reloj[]) => list.map(link).join(', ');
+
+const tramos = ([[t.b1, 0, 300], [t.b2, 300, 600], [t.b3, 600, 1000], [t.b4, 1000, 99999]] as [string, number, number][]).map(([label, lo, hi]) => {
+  const l = all.filter((r) => mid(r) > lo && mid(r) <= hi);
+  return { label, n: l.length, zaf: l.filter((r) => r.crystal === 'Zafiro').length, res: l.length ? Math.max(...l.map((r) => r.reserveHours)) : 0, ej: [...l].sort((a, b) => b.reserveHours - a.reserveHours)[0] };
+}).filter((x) => x.n);
+const porReserva = [...new Set(all.map((r) => r.reserveHours))].sort((a, b) => b - a).map((h) => ({ h, list: all.filter((r) => r.reserveHours === h) }));
+const porBph = [...new Set(all.map((r) => r.bph))].sort((a, b) => a - b).map((b) => ({ b, list: all.filter((r) => r.bph === b) }));
+const porWr = [...new Set(all.map((r) => r.waterResistanceM))].sort((a, b) => a - b).map((m) => ({ m, list: all.filter((r) => r.waterResistanceM === m) }));
+const cristales = ['Zafiro', 'Hardlex', 'Mineral', 'Acrílico'].map((k) => {
+  const l = all.filter((r) => r.crystal === k).sort((a, b) => a.priceRange[0] - b.priceRange[0]);
+  return { k, n: l.length, barato: l[0] };
+}).filter((x) => x.n);
+const munecas = [14, 15, 16, 17, 18, 19, 20].map((cm) => ({ cm, ancho: Math.round(cm * 3.3), lug: Math.round(cm * 3.3 * 0.95) }));
+const setenta = all.filter((r) => r.reserveHours >= 70);
+const gmts = all.filter((r) => r.complications.includes('GMT')).sort((a, b) => a.priceRange[0] - b.priceRange[0]);
+const pilotos = all.filter((r) => r.type === 'Piloto').sort((a, b) => a.priceRange[0] - b.priceRange[0]);
+const lb = c.d.labels;
+const gen = (g: 'sinParada' | 'reserva70') =>
+  g === 'reserva70'
+    ? setenta.length ? [c.d.gen.reserva70(setenta.length, f.eur(Math.min(...setenta.map((r) => r.priceRange[0]))))] : []
+    : c.d.gen.sinParada(all.filter((r) => !r.hacking), all.filter((r) => !r.handWinding), all.length, (r) => `[[${fichaKey(r)}|${c.name(r)}]]`);
+---
+{blocks.map((b) => {
+  if ('h2' in b) return <h2 id={b.id}>{b.h2}</h2>;
+  if ('h3' in b) return <h3>{b.h3}</h3>;
+  if ('p' in b) return <p set:html={I(b.p)} />;
+  if ('note' in b) return <p class="note" set:html={I(b.note)} />;
+  if ('ul' in b) return <ul>{b.ul.map((x) => <li set:html={I(x)} />)}</ul>;
+  if ('ol' in b) return <ol>{b.ol.map((x) => <li set:html={I(x)} />)}</ol>;
+  if ('gen' in b) return gen(b.gen).map((x) => <p set:html={I(x)} />);
+  if ('table' in b) {
+    if (b.table === 'tramos') return (
+      <table class="data list">
+        <thead><tr><th scope="col">{t.thTramo}</th><th scope="col" class="num">{t.thWatches}</th><th scope="col" class="num">{t.thWithSapphire}</th><th scope="col" class="num">{t.thMaxReserve}</th><th scope="col">{t.thTopReserve}</th></tr></thead>
+        <tbody>{tramos.map((x) => <tr><th scope="row">{x.label}</th><td class="num">{x.n}</td><td class="num">{x.zaf}</td><td class="num">{f.h(x.res)}</td><td>{x.ej && <Fragment set:html={link(x.ej)} />}</td></tr>)}</tbody>
+      </table>
+    );
+    if (b.table === 'reserva') return (
+      <table class="data list">
+        <thead><tr><th scope="col" class="num">{t.thReserve}</th><th scope="col">{t.thWatches}</th></tr></thead>
+        <tbody>{porReserva.map((g) => <tr><th scope="row" class="num" style="white-space:nowrap">{f.h(g.h)}</th><td set:html={links(g.list)} /></tr>)}</tbody>
+      </table>
+    );
+    if (b.table === 'frecuencia') return (
+      <table class="data list">
+        <thead><tr><th scope="col" class="num">{t.thFreq}</th><th scope="col" class="num">{t.thWatches}</th><th scope="col">{t.thExamples}</th></tr></thead>
+        <tbody>{porBph.map((g) => <tr><th scope="row" class="num" style="white-space:nowrap">{f.bph(g.b)}</th><td class="num">{g.list.length}</td><td set:html={links(g.list.slice(0, 4)) + (g.list.length > 4 ? '…' : '')} /></tr>)}</tbody>
+      </table>
+    );
+    if (b.table === 'hermeticidad') return (
+      <table class="data list">
+        <thead><tr><th scope="col" class="num">{t.thMetros}</th><th scope="col">{t.thWatches}</th></tr></thead>
+        <tbody>{porWr.map((n) => <tr><th scope="row" class="num">{f.m(n.m)}</th><td set:html={links(n.list)} /></tr>)}</tbody>
+      </table>
+    );
+    if (b.table === 'cristales') return (
+      <table class="data list">
+        <thead><tr><th scope="col">{t.thCrystal}</th><th scope="col" class="num">{t.thWatches}</th><th scope="col">{t.thCheapest}</th></tr></thead>
+        <tbody>{cristales.map((x) => <tr><th scope="row">{c.tr('crystal', x.k)}</th><td class="num">{x.n}</td><td><Fragment set:html={link(x.barato)} />, {f.price(x.barato.priceRange)}</td></tr>)}</tbody>
+      </table>
+    );
+    if (b.table === 'munecas') return (
+      <table class="data list">
+        <thead><tr><th scope="col" class="num">{t.thContorno}</th><th scope="col" class="num">{t.thAncho}</th><th scope="col" class="num">{t.thLugMax}</th></tr></thead>
+        <tbody>{munecas.map((x) => <tr><th scope="row" class="num">{f.int(x.cm)} cm</th><td class="num">{f.int(x.ancho)} mm</td><td class="num">{f.int(x.lug)} mm</td></tr>)}</tbody>
+      </table>
+    );
+    if (b.table === 'gmt' || b.table === 'pilotos') { const l = b.table === 'gmt' ? gmts : pilotos; return l.length ? (
+      <table class="data list">
+        <thead><tr><th scope="col">{t.thWatch}</th><th scope="col">{t.thCaliber}</th><th scope="col" class="num">{lb.diametro}</th><th scope="col">{t.thCrystal}</th><th scope="col" class="num">{t.thReserve}</th><th scope="col" class="num">{t.thRange}</th></tr></thead>
+        <tbody>{l.map((r) => <tr><th scope="row" set:html={link(r)} /><td>{r.caliber}</td><td class="num">{f.mm(r.diameterMm)}</td><td>{c.tr('crystal', r.crystal)}</td><td class="num">{f.h(r.reserveHours)}</td><td class="num" style="white-space:nowrap">{f.price(r.priceRange)}</td></tr>)}</tbody>
+      </table>
+    ) : null; }
+  }
+  return null;
+})}

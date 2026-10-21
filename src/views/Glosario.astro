@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import type { Ctx } from '../i18n/types';
+import { breadcrumbLd, abs } from '../lib/seo';
+import { href, disponibles, existeEn } from '../lib/routes';
+interface Props { c: Ctx }
+const { c } = Astro.props;
+const { t, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const avail = await disponibles();
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navGuides, H('guias')], [t.glH1, H('glosario')]];
+const ld = { '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: t.glName, url: abs(H('glosario')), hasDefinedTerm: d.glosario.map((g) => ({ '@type': 'DefinedTerm', name: g.t, description: g.d, url: abs(`${H('glosario')}#${g.id}`) })) };
+---
+<Base c={c} pageKey="glosario" title={t.glTitle} description={t.glDesc} current="guias" jsonld={[breadcrumbLd(crumbs), ld]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display">{t.glH1}</h1>
+    <p class="lead">{t.glLead}</p>
+  </section>
+  <nav class="links" aria-label={t.terms}>{d.glosario.map((g) => <a class="link" href={`#${g.id}`}>{g.t}</a>)}</nav>
+  <section class="prose" style="padding-top:24px">
+    <dl class="glos">
+      {d.glosario.map((g) => <><dt id={g.id}>{g.t}</dt><dd>{g.d} {g.guia && existeEn(avail, g.guia) && <a href={H(g.guia)}>{t.moreInfo}</a>}</dd></>)}
+    </dl>
+  </section>
+</Base>

@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Foto from '../components/Foto.astro';
+import type { Ctx } from '../i18n/types';
+import { fill } from '../i18n';
+import { getRelojes } from '../lib/watches';
+import { FAMILIAS } from '../data/calibres';
+import { AMBIENTE, txt } from '../lib/photos';
+import { breadcrumbLd } from '../lib/seo';
+import { href } from '../lib/routes';
+interface Props { c: Ctx }
+const { c } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const fams = FAMILIAS.map((x) => ({ x, txt: d.calibres[x.slug]!, list: all.filter((r) => x.match(r.caliber)) })).filter((x) => x.list.length);
+const rango = (ns: number[]) => (Math.min(...ns) === Math.max(...ns) ? f.int(ns[0]) : `${f.int(Math.min(...ns))}–${f.int(Math.max(...ns))}`);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navCalibers, H('calibres')]];
+const hero = txt(AMBIENTE.zenith, c);
+---
+<Base c={c} pageKey="calibres" title={t.calTitle} description={t.calDesc} current="calibres" jsonld={[breadcrumbLd(crumbs)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display">{t.calH1}</h1>
+    <p class="lead">{t.calLead}</p>
+  </section>
+  <section class="hero short" aria-label={hero.alt}><Foto file={AMBIENTE.zenith.file} alt={hero.alt} sizes="100vw" eager /></section>
+
+  <h2 class="label">{t.calInCatalog}</h2>
+  <section class="cmp">
+    <table class="data list">
+      <thead><tr><th scope="col">{t.thCaliber}</th><th scope="col">{t.thMaker}</th><th scope="col" class="num">{t.thReserve}</th><th scope="col" class="num">{fill(t.thFreqUnit, {})}</th><th scope="col" class="num">{t.thWatches}</th></tr></thead>
+      <tbody>
+        {fams.map(({ x, txt: tx, list }) => (
+          <tr><th scope="row"><a href={H(`calibre:${x.slug}`)}>{tx.nombre}</a></th><td>{tx.fabricante}</td><td class="num">{rango(list.map((r) => r.reserveHours))} h</td><td class="num">{rango(list.map((r) => r.bph))}</td><td class="num">{list.length}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <h2 class="label">{t.eachFamily}</h2>
+  <nav class="toc">
+    {fams.map(({ x, txt: tx, list }) => (
+      <a href={H(`calibre:${x.slug}`)}><b>{tx.nombre}</b><span>{d.gen.count(list.length)}</span><p>{tx.resumen}</p></a>
+    ))}
+  </nav>
+</Base>

@@ -1,0 +1,7 @@
+---
+// Logotipo: «Calibrario» en Playfair Display con los puntos de las dos íes en rojo rubí,
+// como los rubíes de un calibre. El texto real va para lectores de pantalla.
+interface Props { size?: 'nav' | 'big' }
+const { size = 'nav' } = Astro.props;
+---
+<span class={`logo logo-${size}`}><span aria-hidden="true">Cal<span class="ri">ı</span>brar<span class="ri">ı</span>o</span><span class="sr-only">Calibrario</span></span>

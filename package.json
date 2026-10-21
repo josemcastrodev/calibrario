@@ -1,0 +1,27 @@
+{
+  "name": "calibrario",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Comparador de relojes automáticos de 90 a 1.500 €",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview --port 4322",
+    "check": "astro check",
+    "maquetas": "node design/build.mjs && node design/serve.mjs",
+    "build:borrador": "astro build --mode borrador",
+    "check:enlaces": "node scripts/comprobar-enlaces.mjs dist"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/newsreader": "^5.3.0",
+    "@fontsource/playfair-display": "^5.3.0",
+    "astro": "^5.12.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.8.0"
+  }
+}

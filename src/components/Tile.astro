@@ -1,0 +1,11 @@
+---
+// Foto vertical enorme con el título en blanco encima (el patrón de pareja de sigmaphoto.com).
+import Foto from './Foto.astro';
+interface Props { file: string; alt: string; pos?: string; t: string; d?: string; cta: string; href: string }
+const { file, alt, pos, t, d, cta, href } = Astro.props;
+---
+<a class="tile" href={href}>
+  <Foto file={file} alt={alt} pos={pos} />
+  <span class="shade"></span>
+  <span class="in"><span class="t">{t}</span>{d && <span class="d">{d}</span>}<span class="link">{cta}</span></span>
+</a>

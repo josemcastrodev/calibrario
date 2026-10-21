@@ -1,0 +1,54 @@
+---
+// Listados por filtro: /relojes-de-buceo-automaticos/, /en/dive-watches/… Con texto y preguntas calculados.
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import WatchCard from '../components/WatchCard.astro';
+import Faq from '../components/Faq.astro';
+import type { Ctx, ListadoKey } from '../i18n/types';
+import { fill } from '../i18n';
+import { getRelojes } from '../lib/watches';
+import { LISTADOS, aplicar, valor } from '../lib/listados';
+import { breadcrumbLd, faqLd, itemListLd } from '../lib/seo';
+import { href, fichaHref, disponibles } from '../lib/routes';
+import { inline } from '../lib/rich';
+interface Props { c: Ctx; lkey: ListadoKey }
+const { c, lkey } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const l = LISTADOS.find((x) => x.key === lkey)!;
+const tx = d.listados[lkey];
+const list = aplicar(l, all);
+const { intro, faqs } = d.gen.listado(list, c);
+const otros = LISTADOS.filter((x) => x.key !== lkey && aplicar(x, all).length >= 3);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navWatches, H('relojes')], [tx.h1, H(`listado:${lkey}`)]];
+const draft = list.some((r) => !r.verified);
+const avail = await disponibles();
+const conValor = lkey === 'calidadPrecio';
+---
+<Base c={c} pageKey={`listado:${lkey}`} title={`${tx.title} | Calibrario`} description={tx.description} current="relojes" noindex={draft} jsonld={[breadcrumbLd(crumbs), itemListLd(list, fichaHref(lang), c), faqLd(faqs)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display" style={tx.h1.length > 30 ? 'font-size:clamp(32px,4.8vw,72px)' : undefined}>{tx.h1}</h1>
+    <p class="lead">{intro}</p>
+    <p class="note">{fill(t.criterion, { x: tx.criterio })} {draft ? t.makersDataDraft : t.makersData}</p>
+  </section>
+
+  <section class="catalog"><div class="grid">{list.map((r) => <WatchCard r={r} c={c} />)}</div></section>
+
+  <h2 class="label">{t.allData}</h2>
+  <section class="cmp">
+    <table class="data list">
+      <thead><tr><th scope="col">{t.thWatch}</th><th scope="col">{t.thCaliber}</th><th scope="col" class="num">{t.thReserve}</th><th scope="col">{t.thCrystal}</th><th scope="col" class="num">{t.thWr}</th><th scope="col" class="num">Ø</th><th scope="col" class="num">{t.thRange}</th>{conValor && <th scope="col" class="num">{t.thValue}</th>}</tr></thead>
+      <tbody>
+        {list.map((r) => <tr><th scope="row"><a href={H(`ficha:${r.id}`)}>{c.name(r)}</a></th><td>{r.caliber}</td><td class="num">{f.h(r.reserveHours)}</td><td>{c.tr('crystal', r.crystal)}</td><td class="num">{f.m(r.waterResistanceM)}</td><td class="num">{f.mm(r.diameterMm)}</td><td class="num" style="white-space:nowrap">{f.price(r.priceRange)}</td>{conValor && <td class="num">{f.dec(Math.round(valor(r) * 10) / 10)}</td>}</tr>)}
+      </tbody>
+    </table>
+    <p class="note" set:html={inline(t.listNote, lang, avail)} />
+  </section>
+
+  <Faq faqs={faqs} c={c} />
+
+  <h2 class="label">{t.otherListings}</h2>
+  <nav class="links" aria-label={t.otherListings}>{otros.map((x) => <a class="link" href={H(`listado:${x.key}`)}>{d.listados[x.key].h1}</a>)}</nav>
+</Base>

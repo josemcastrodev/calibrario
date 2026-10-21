@@ -1,0 +1,43 @@
+---
+// Todas las páginas de la web, en todos los idiomas. La URL sale de routes.ts (con los segmentos
+// traducidos de cada idioma) y cada tipo de página tiene su vista en src/views/.
+import Home from '../views/Home.astro';
+import Catalog from '../views/Catalog.astro';
+import Ficha from '../views/Ficha.astro';
+import CompareIndex from '../views/CompareIndex.astro';
+import Par from '../views/Par.astro';
+import CalibresIndex from '../views/CalibresIndex.astro';
+import Calibre from '../views/Calibre.astro';
+import MarcasIndex from '../views/MarcasIndex.astro';
+import Marca from '../views/Marca.astro';
+import Listado from '../views/Listado.astro';
+import GuiasIndex from '../views/GuiasIndex.astro';
+import Guia from '../views/Guia.astro';
+import Glosario from '../views/Glosario.astro';
+import Page from '../views/Page.astro';
+import type { GuiaKey, ListadoKey, PageKey } from '../i18n/types';
+import type { Lang } from '../i18n/langs';
+import { ctx } from '../i18n';
+import { staticPaths } from '../lib/routes';
+
+export const getStaticPaths = staticPaths;
+const { lang, key } = Astro.props as { lang: Lang; key: string };
+const c = ctx(lang);
+const i = key.indexOf(':');
+const kind = i < 0 ? key : key.slice(0, i);
+const id = i < 0 ? '' : key.slice(i + 1);
+---
+{kind === 'home' && <Home c={c} />}
+{kind === 'relojes' && <Catalog c={c} />}
+{kind === 'ficha' && <Ficha c={c} id={id} />}
+{kind === 'comparar' && <CompareIndex c={c} />}
+{kind === 'par' && <Par c={c} slug={id} />}
+{kind === 'calibres' && <CalibresIndex c={c} />}
+{kind === 'calibre' && <Calibre c={c} slug={id} />}
+{kind === 'marcas' && <MarcasIndex c={c} />}
+{kind === 'marca' && <Marca c={c} slug={id} />}
+{kind === 'listado' && <Listado c={c} lkey={id as ListadoKey} />}
+{kind === 'guias' && <GuiasIndex c={c} />}
+{kind === 'guia' && <Guia c={c} gkey={id as GuiaKey} />}
+{kind === 'glosario' && <Glosario c={c} />}
+{['asistente', 'metodo', 'contacto', 'creditos', 'afiliado', 'privacidad', 'cookies', 'legal'].includes(kind) && <Page c={c} pkey={kind as PageKey} />}

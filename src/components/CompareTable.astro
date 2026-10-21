@@ -1,0 +1,36 @@
+---
+// Tabla comparativa: una columna por reloj, todas del mismo ancho, y el mejor dato de cada fila en rojo.
+// Con `pick`, la cabecera de cada columna es el propio selector: el nombre, «Cambiar» y un desplegable
+// invisible encima, así selector y columna siempre cuadran, con nombres cortos o largos.
+// Con `buy`, el pie lleva el botón de Amazon y la ficha de cada reloj.
+import type { Reloj } from '../content.config';
+import type { Ctx } from '../i18n/types';
+import { compare } from '../lib/watches';
+import { affiliateUrl } from '../lib/amazon';
+import { href, fichaKey } from '../lib/routes';
+interface Props { list: Reloj[]; c: Ctx; pick?: Reloj[]; buy?: boolean }
+const { list, c, pick, buy = false } = Astro.props;
+const rows = compare(list, c);
+const t = c.t;
+---
+<table class={`data cmpt n${list.length}`} style={`--cols:${list.length}`} data-cmp-table>
+  <colgroup><col class="lab" />{list.map(() => <col />)}</colgroup>
+  <thead>
+    <tr>
+      <th scope="col"><span class="sr-only">{t.datum}</span></th>
+      {list.map((r, i) => pick
+        ? <th scope="col" class="pickcol"><span class="nm" data-nm aria-hidden="true">{c.name(r)}</span><span class="chg" aria-hidden="true">{t.change}</span><select aria-label={c.d.gen.slot(i + 1)} data-slot={i}>{pick.map((o) => <option value={o.id} selected={o.id === r.id}>{c.name(o)}</option>)}</select></th>
+        : <th scope="col"><a class="nm" href={href(c.lang, fichaKey(r))}>{c.name(r)}</a></th>)}
+    </tr>
+  </thead>
+  <tbody data-cmp-body>
+    {rows.map((row) => (
+      <tr><th scope="row">{row.label}</th>{row.values.map((v, i) => <td class={row.best.includes(i) ? 'best' : undefined}>{v}</td>)}</tr>
+    ))}
+  </tbody>
+  {buy && (
+    <tfoot data-cmp-foot>
+      <tr><td></td>{list.map((r) => <td><a class="btn" href={affiliateUrl(r)} rel="sponsored noopener">{t.buy}</a><a class="link" href={href(c.lang, fichaKey(r))}>{t.seeSheet}</a></td>)}</tr>
+    </tfoot>
+  )}
+</table>

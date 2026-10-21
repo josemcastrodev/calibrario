@@ -1,0 +1,59 @@
+---
+// Índice de marcas: país, número de modelos, precio de entrada y calibres de cada una.
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import type { Ctx } from '../i18n/types';
+import { getRelojes } from '../lib/watches';
+import { MARCAS, MIN_MARCA, relojesDe } from '../data/marcas';
+import { breadcrumbLd } from '../lib/seo';
+import { href, fichaKey } from '../lib/routes';
+interface Props { c: Ctx }
+const { c } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const filas = MARCAS.map((m) => ({ m, list: relojesDe(m, all).sort((a, b) => a.priceRange[0] - b.priceRange[0]) }))
+  .filter((x) => x.list.length)
+  .sort((a, b) => b.list.length - a.list.length || a.m.name.localeCompare(b.m.name));
+const conPagina = filas.filter((x) => x.list.length >= MIN_MARCA);
+const sueltas = filas.filter((x) => x.list.length < MIN_MARCA);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navBrands, H('marcas')]];
+---
+<Base c={c} pageKey="marcas" title={t.brandsTitle} description={t.brandsDesc} current="marcas" jsonld={[breadcrumbLd(crumbs)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display">{t.brandsH1}</h1>
+    <p class="lead">{t.brandsLead}</p>
+  </section>
+
+  <h2 class="label">{t.brandsInCat}</h2>
+  <section class="cmp">
+    <table class="data list">
+      <thead><tr><th scope="col">{t.thBrand}</th><th scope="col">{t.thCountry}</th><th scope="col" class="num">{t.thModels}</th><th scope="col" class="num">{t.thFrom}</th><th scope="col">{t.thCaliber}</th></tr></thead>
+      <tbody>
+        {filas.map(({ m, list }) => (
+          <tr>
+            <th scope="row"><a href={list.length >= MIN_MARCA ? H(`marca:${m.slug}`) : H(fichaKey(list[0]))}>{m.name}</a></th>
+            <td>{c.tr('origin', m.origin)}</td>
+            <td class="num">{list.length}</td>
+            <td class="num" style="white-space:nowrap">{f.eur(list[0].priceRange[0])}</td>
+            <td>{[...new Set(list.map((r) => r.caliber))].join(', ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <nav class="toc">
+    {conPagina.map(({ m, list }) => <a href={H(`marca:${m.slug}`)}><b>{m.name}</b><span>{d.gen.count(list.length)}</span><p>{d.marcas[m.slug]}</p></a>)}
+  </nav>
+
+  {sueltas.length > 0 && (
+    <>
+      <h2 class="label">{t.brandOne}</h2>
+      <nav class="toc">
+        {sueltas.map(({ m, list }) => <a href={H(fichaKey(list[0]))}><b>{c.name(list[0])}</b><span>{c.tr('origin', m.origin)}</span><p>{d.marcas[m.slug]}</p></a>)}
+      </nav>
+    </>
+  )}
+</Base>

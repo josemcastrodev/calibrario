@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Tile from '../components/Tile.astro';
+import WatchCard from '../components/WatchCard.astro';
+import CompareTable from '../components/CompareTable.astro';
+import FitBand from '../components/FitBand.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Faq from '../components/Faq.astro';
+import type { Reloj } from '../content.config';
+import type { Ctx } from '../i18n/types';
+import { fill } from '../i18n';
+import { low1 } from '../i18n/shared';
+import { LOCALE } from '../i18n/langs';
+import { getRelojes, specValue, rivals, pares, paresDe, slim } from '../lib/watches';
+import { FOTO_RELOJ, AMBIENTE, HERO_ESTILO, foto, txt } from '../lib/photos';
+import { drawing } from '../lib/drawing';
+import { familiaDe } from '../data/calibres';
+import { marcaDe } from '../data/marcas';
+import { affiliateUrl } from '../lib/amazon';
+import { breadcrumbLd, productLd, faqLd, resumenDe } from '../lib/seo';
+import { href, fichaHref, disponibles, existeEn } from '../lib/routes';
+import { getImage } from 'astro:assets';
+interface Props { c: Ctx; id: string }
+const { c, id } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const r = all.find((x) => x.id === id) as Reloj;
+const riv = rivals(all, r, 2);
+const trio = [r, ...riv];
+const p = FOTO_RELOJ[r.id];
+// Si la foto del propio reloj es la misma que la de cabecera de su estilo, la cabecera usa otra.
+const heroBase = AMBIENTE[HERO_ESTILO[r.type] ?? 'snzh'];
+const heroF = p && p.file === heroBase.file ? AMBIENTE.prospex2 : heroBase;
+const hero = txt(heroF, c);
+const fam = familiaDe(r.caliber);
+const famT = fam ? d.calibres[fam.slug] ?? null : null;
+const avail = await disponibles();
+const comparativas = paresDe(pares(all), r);
+const long = r.model.length > 20;
+const faqs = d.gen.fichaFaqs(r, famT?.nombre ?? null, c);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navWatches, H('relojes')], [c.name(r), H(`ficha:${r.id}`)]];
+const og = p ? (await getImage({ src: foto(p.file), width: 1200, format: 'jpg' })).src : undefined;
+const resumen = resumenDe(r, c);
+// Nota de la foto dentro de la frase: primera letra en minúscula, salvo en alemán (sustantivos con mayúscula).
+const lc = (s: string) => (lang === 'de' ? s : low1(s));
+const checked = r.amazonChecked ? new Date(`${r.amazonChecked}T12:00:00Z`).toLocaleDateString(LOCALE[lang], { day: 'numeric', month: 'long', year: 'numeric' }) : null;
+---
+<Base
+  c={c}
+  pageKey={`ficha:${r.id}`}
+  title={d.gen.fichaTitle(r, c)}
+  description={d.gen.fichaDescription(r, c)}
+  current="relojes"
+  data={slim(all, c, fichaHref(lang))}
+  noindex={!r.verified}
+  draft={!r.verified}
+  image={og}
+  jsonld={[productLd(r, c, og), breadcrumbLd(crumbs), faqLd(faqs)]}
+>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display" style={long ? 'font-size:clamp(34px,4.8vw,68px)' : undefined}><span class="sub">{r.brand}</span><span class="sub">{r.model}</span></h1>
+  </section>
+  <section class="hero short" aria-label={hero.alt}><Foto file={heroF.file} alt={hero.alt} sizes="100vw" eager /></section>
+
+  <section class="buybox">
+    <div>
+      {p
+        ? <div class="main"><Foto file={p.file} alt={txt(p, c).alt} pos={p.pos} sizes="(min-width: 900px) 66vw, 100vw" /></div>
+        : <div class="main drawn" set:html={drawing(r, c, { view: 'front', dims: [], s: 6, label: false, hands: true, frame: 60, id: `m-${r.id}` })} />}
+      <p class="cap">{p ? `${fill(t.photoIs, { x: lc(txt(p, c).note) })} ${t.samplePhoto}` : t.drawnPhoto} {fill(t.headerPhoto, { x: lc(hero.note) })}</p>
+    </div>
+    <div class="side">
+      <div class="hd"><span class="nm">{c.name(r)}</span><span class="pr">{f.price(r.priceRange)}</span></div>
+      <div class="ref">{existeEn(avail, `marca:${marcaDe(r).slug}`) ? <a href={H(`marca:${marcaDe(r).slug}`)}>{r.brand}</a> : r.brand} · {t.ref} {r.ref} · {c.tr('type', r.type)} · {c.tr('origin', r.origin)}</div>
+      <p class="gama">{t.gamaNote}</p>
+      <a class="btn block" href={affiliateUrl(r)} rel="sponsored noopener">{t.buy}</a>
+      <ul>
+        <li>{resumen}</li>
+        {d.gen.fichaBullets(r, c).map((b) => <li>{b}</li>)}
+      </ul>
+      <div class="more"><a class="link" href="#rivales">{t.vsRivals}</a><a class="link" href="#ficha">{t.specsTitle}</a></div>
+      <p class="cap">{t.affNote}{checked && ` ${fill(t.amazonChecked, { x: checked })}`}</p>
+    </div>
+  </section>
+
+  <h2 class="label">{t.inFigures}</h2>
+  <section class="figs">
+    <div><b>{f.h(r.reserveHours)}</b><span>{t.figReserve}</span></div>
+    <div><b>{f.dec(r.diameterMm)}</b><span>{t.figDiam}</span></div>
+    <div><b>{f.dec(r.thicknessMm)}</b><span>{t.figThick}</span></div>
+    <div><b>{f.dec(r.lugToLugMm)}</b><span>{t.figLug}</span></div>
+    <div><b>{f.m(r.waterResistanceM)}</b><span>{t.figWr}</span></div>
+    <div><b>{c.tr('crystal', r.crystal)}</b><span>{t.figCrystal}</span></div>
+  </section>
+
+  <FitBand r={r} c={c} rings={trio} />
+
+  <h2 class="label" id="ficha">{t.specsTitle}</h2>
+  <section class="specs">
+    {d.groups.map(([g, keys]) => (
+      <div><h3>{g}</h3><table class="data"><tbody>{keys.map((k) => <tr><th scope="row">{d.labels[k]}</th><td>{specValue(r, k, c)}</td></tr>)}</tbody></table></div>
+    ))}
+  </section>
+  <p class="note center" style="padding:0 24px">{r.verified ? t.verified : `${t.pending}${lang === 'es' && r.dataNotes ? ` ${r.dataNotes}` : ''}`}</p>
+
+  {fam && famT && (
+    <>
+      <h2 class="label">{t.theCaliber}</h2>
+      <section class="prose center">
+        <p class="lead">{famT.resumen}</p>
+        {existeEn(avail, `calibre:${fam.slug}`) && <p style="margin-top:20px"><a class="link" href={H(`calibre:${fam.slug}`)}>{d.gen.allAbout(famT.nombre)}</a></p>}
+      </section>
+    </>
+  )}
+
+  {riv.length > 0 && (
+    <>
+      <h2 class="label" id="rivales">{t.rivalsTitle}</h2>
+      <section class="trio">{trio.map((x) => <WatchCard r={x} c={c} sizes="(min-width: 900px) 33vw, 33vw" />)}</section>
+      <section class="cmp"><CompareTable list={trio} c={c} buy /><p class="note">{t.rivalsNote}</p></section>
+    </>
+  )}
+
+  {comparativas.length > 0 && (
+    <>
+      <h2 class="label">{t.comparisons}</h2>
+      <nav class="links" aria-label={t.comparisons}>{comparativas.map((x) => <a class="link" href={H(`par:${x.slug}`)}>{d.gen.pairLabel(x.a.model, x.b.model)}</a>)}</nav>
+    </>
+  )}
+
+  <h2 class="label">{t.understand}</h2>
+  <section class="pair">
+    <Tile file={AMBIENTE.rotor.file} alt={txt(AMBIENTE.rotor, c).alt} t={t.tReserve} d={t.tReserveD} cta={t.readGuide} href={H('guia:reserva')} />
+    <Tile file={AMBIENTE.chrono1.file} alt={txt(AMBIENTE.chrono1, c).alt} t={t.tCrystal} d={t.tCrystalD} cta={t.readGuide} href={H('guia:cristal')} />
+  </section>
+
+  <Faq faqs={faqs} c={c} />
+</Base>

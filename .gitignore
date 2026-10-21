@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.taste-skill/
+*.log
+.DS_Store
+Thumbs.db
+
+# Material de trabajo que no se publica (fotos originales descargadas y maquetas antiguas)
+/assets/
+/design/

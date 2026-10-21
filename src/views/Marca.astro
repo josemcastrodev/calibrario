@@ -1,0 +1,82 @@
+---
+// Página de marca: /marcas/seiko/, /en/brands/seiko/… Sus modelos, sus calibres y datos calculados.
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Foto from '../components/Foto.astro';
+import WatchCard from '../components/WatchCard.astro';
+import Faq from '../components/Faq.astro';
+import type { Ctx } from '../i18n/types';
+import { fill } from '../i18n';
+import { getRelojes } from '../lib/watches';
+import { FAMILIAS } from '../data/calibres';
+import { MARCAS, MIN_MARCA, relojesDe, type Marca } from '../data/marcas';
+import { AMBIENTE, txt } from '../lib/photos';
+import { breadcrumbLd, faqLd, itemListLd } from '../lib/seo';
+import { href, fichaHref, disponibles, existeEn } from '../lib/routes';
+interface Props { c: Ctx; slug: string }
+const { c, slug } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const avail = await disponibles();
+const m = MARCAS.find((x) => x.slug === slug) as Marca;
+const list = relojesDe(m, all).sort((a, b) => a.priceRange[0] - b.priceRange[0]);
+const fams = FAMILIAS.filter((x) => list.some((r) => x.match(r.caliber)) && existeEn(avail, `calibre:${x.slug}`));
+const otras = MARCAS.filter((x) => x.slug !== slug && relojesDe(x, all).length >= MIN_MARCA);
+const intro = d.genx.brandIntro(m.name, list, c);
+const faqs = d.genx.brandFaqs(m.name, list, c);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navBrands, H('marcas')], [m.name, H(`marca:${slug}`)]];
+const draft = list.some((r) => !r.verified);
+const FOTO: Record<string, keyof typeof AMBIENTE> = { seiko: 'prospex', citizen: 'citizenCut', invicta: 'invictaCut', hamilton: 'murph', laco: 'laco2', glycine: 'laco2', alpina: 'laco2' };
+const POR_ORIGEN: Record<string, keyof typeof AMBIENTE> = { Japón: 'snzh', Suiza: 'zenith', Alemania: 'laco2', 'EE. UU.': 'murph', Rusia: 'movement' };
+const heroKey = FOTO[slug] ?? POR_ORIGEN[m.origin] ?? 'bench';
+const hero = txt(AMBIENTE[heroKey], c);
+const zaf = list.filter((r) => r.crystal === 'Zafiro').length;
+const maxRes = Math.max(...list.map((r) => r.reserveHours));
+---
+<Base c={c} pageKey={`marca:${slug}`} title={fill(t.brandTitle, { x: m.name })} description={fill(t.brandDesc, { x: m.name, n: list.length })} current="marcas" noindex={draft} jsonld={[breadcrumbLd(crumbs), itemListLd(list, fichaHref(lang), c), faqLd(faqs)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display">{fill(t.brandH1, { x: m.name })}</h1>
+    <p class="lead">{d.marcas[slug]}</p>
+  </section>
+  <section class="hero short" aria-label={hero.alt}><Foto file={AMBIENTE[heroKey].file} alt={hero.alt} sizes="100vw" eager /></section>
+
+  <h2 class="label">{t.inFigures}</h2>
+  <section class="figs">
+    <div><b>{list.length}</b><span>{t.figInCat}</span></div>
+    <div><b>{f.eur(list[0].priceRange[0])}</b><span>{t.figFrom}</span></div>
+    <div><b>{f.h(maxRes)}</b><span>{t.thMaxReserve}</span></div>
+    <div><b>{zaf}/{list.length}</b><span>{t.thWithSapphire}</span></div>
+    <div><b>{new Set(list.map((r) => r.caliber)).size}</b><span>{t.brandCalibers}</span></div>
+    <div><b>{c.tr('origin', m.origin)}</b><span>{t.thCountry}</span></div>
+  </section>
+
+  <h2 class="label">{t.brandModels}</h2>
+  <section class="prose"><p>{intro}</p></section>
+  <section class="catalog"><div class="grid">{list.map((r) => <WatchCard r={r} c={c} />)}</div></section>
+
+  <h2 class="label">{t.allData}</h2>
+  <section class="cmp">
+    <table class="data list">
+      <thead><tr><th scope="col">{t.thWatch}</th><th scope="col">{t.thCaliber}</th><th scope="col" class="num">{t.thReserve}</th><th scope="col">{t.thCrystal}</th><th scope="col" class="num">{t.thWr}</th><th scope="col" class="num">Ø</th><th scope="col" class="num">{t.thRange}</th></tr></thead>
+      <tbody>
+        {list.map((r) => <tr><th scope="row"><a href={H(`ficha:${r.id}`)}>{c.name(r)}</a></th><td>{r.caliber}</td><td class="num">{f.h(r.reserveHours)}</td><td>{c.tr('crystal', r.crystal)}</td><td class="num">{f.m(r.waterResistanceM)}</td><td class="num">{f.mm(r.diameterMm)}</td><td class="num" style="white-space:nowrap">{f.price(r.priceRange)}</td></tr>)}
+      </tbody>
+    </table>
+  </section>
+
+  {fams.length > 0 && (
+    <>
+      <h2 class="label">{t.brandCalibers}</h2>
+      <nav class="toc">
+        {fams.map((x) => <a href={H(`calibre:${x.slug}`)}><b>{d.calibres[x.slug].nombre}</b><span>{d.gen.count(list.filter((r) => x.match(r.caliber)).length)}</span><p>{d.calibres[x.slug].resumen}</p></a>)}
+      </nav>
+    </>
+  )}
+
+  <Faq faqs={faqs} c={c} />
+
+  <h2 class="label">{t.otherBrands}</h2>
+  <nav class="links" aria-label={t.otherBrands}>{otras.map((x) => <a class="link" href={H(`marca:${x.slug}`)}>{x.name}</a>)}<a class="link" href={H('marcas')}>{t.brandsH1}</a></nav>
+</Base>

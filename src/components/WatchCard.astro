@@ -1,0 +1,22 @@
+---
+// Tarjeta de reloj para catálogo y listados: foto (o dibujo a escala si aún no hay foto), nombre, datos clave y gama.
+import type { Reloj } from '../content.config';
+import type { Ctx } from '../i18n/types';
+import Foto from './Foto.astro';
+import { FOTO_RELOJ, txt } from '../lib/photos';
+import { drawing } from '../lib/drawing';
+import { href, fichaKey } from '../lib/routes';
+interface Props { r: Reloj; c: Ctx; item?: boolean; sizes?: string }
+const { r, c, item = false, sizes = '(min-width: 1100px) 25vw, (min-width: 900px) 33vw, 50vw' } = Astro.props;
+const f = FOTO_RELOJ[r.id];
+const fm = c.f;
+const crystal = c.tr('crystal', r.crystal);
+---
+<a class="card" href={href(c.lang, fichaKey(r))} data-item={item ? r.id : undefined}>
+  {f
+    ? <div class="img"><Foto file={f.file} alt={txt(f, c).alt} pos={f.pos} sizes={sizes} /></div>
+    : <div class="img drawn" set:html={drawing(r, c, { view: 'front', dims: [], s: 3, label: false, hands: false, frame: 60, id: `c-${r.id}` })} />}
+  <div class="nm">{c.name(r)}</div>
+  <div class="sp">{r.caliber}, {fm.h(r.reserveHours)}, {crystal === 'Hardlex' || c.lang === 'de' ? crystal : crystal.toLowerCase()}, {fm.m(r.waterResistanceM)}, {fm.mm(r.diameterMm)}</div>
+  <div class="pr">{fm.price(r.priceRange)}</div>
+</a>

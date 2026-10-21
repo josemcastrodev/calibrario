@@ -1,0 +1,18 @@
+---
+// Página 404 (Cloudflare Pages la sirve para cualquier dirección que no existe, en cualquier idioma).
+import Base from '../layouts/Base.astro';
+import { ctx, LANGS_ON } from '../i18n';
+import { LANG_NAME, HREFLANG } from '../i18n/langs';
+import { href } from '../lib/routes';
+const c = ctx('es');
+const t = c.t;
+const otros = LANGS_ON.filter((l) => l !== 'es');
+---
+<Base c={c} pageKey="home" title={t.nfTitle} description={t.nfLead} noindex bare>
+  <section class="ptitle" style="padding:120px 24px">
+    <h1 class="display">{t.nfH1}</h1>
+    <p class="lead">{t.nfLead}</p>
+    <div class="acts" style="margin-top:32px"><a class="btn" href={href('es', 'relojes')}>{t.seeCatalog}</a><a class="link" href={href('es', 'home')}>{t.home}</a></div>
+    {otros.length > 0 && <p class="note" style="margin-top:40px">{otros.map((l, i) => <>{i > 0 && ' · '}<a href={href(l, 'home')} hreflang={HREFLANG[l]} lang={HREFLANG[l]}>{LANG_NAME[l]}</a></>)}</p>}
+  </section>
+</Base>

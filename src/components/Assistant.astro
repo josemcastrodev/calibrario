@@ -1,0 +1,27 @@
+---
+// Banda roja con el asistente de tres preguntas. Sin script, el formulario lleva al catálogo.
+import type { Ctx } from '../i18n/types';
+import { href } from '../lib/routes';
+interface Props { c: Ctx; h?: 'h1' | 'h2' }
+const { c, h = 'h2' } = Astro.props;
+const H = h;
+const t = c.t;
+const fields: { name: string; label: string; opts: [string, string][] }[] = [
+  { name: 'presupuesto', label: t.asBudget, opts: [['b1', t.b1], ['b2', t.b2], ['b3', t.b3], ['b4', t.b4]] },
+  { name: 'uso', label: t.asUse, opts: [['diario', t.uDaily], ['agua', t.uWater], ['vestir', t.uDress], ['campo', t.uField]] },
+  { name: 'muneca', label: t.asWrist, opts: [['w1', t.w1], ['w2', t.w2], ['w3', t.w3]] },
+];
+---
+<section class="redband" id="asistente">
+  <H class="display">{t.asH}</H>
+  <p class="lead">{t.asLead}</p>
+  <form data-assistant action={href(c.lang, 'relojes')}>
+    <div class="row">
+      {fields.map((f) => (
+        <fieldset><legend>{f.label}</legend><label><span>{f.label}</span><select name={f.name}><option value="" selected disabled>{t.choose}</option>{f.opts.map(([v, l]) => <option value={v}>{l}</option>)}</select></label></fieldset>
+      ))}
+    </div>
+    <ol class="picks" data-assistant-out hidden></ol>
+  </form>
+  <p class="hint">{t.asHint} <a href={href(c.lang, 'metodo#asistente')}>{t.howItWorks}</a>.</p>
+</section>

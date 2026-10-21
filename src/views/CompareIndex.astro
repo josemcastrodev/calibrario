@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import CompareTable from '../components/CompareTable.astro';
+import type { Ctx } from '../i18n/types';
+import { getRelojes, slim, pares, TIPOS } from '../lib/watches';
+import { breadcrumbLd } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx }
+const { c } = Astro.props;
+const { t, lang } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const ids = ['seiko-5-sports-gmt-ssk033k1', 'citizen-tsuyosa-nj0150-81z', 'tissot-prx-powermatic-80-35'];
+const def = ids.map((id) => all.find((r) => r.id === id)).filter(Boolean) as typeof all;
+const trio = def.length === 3 ? def : all.slice(0, 3);
+const todos = pares(all);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navCompare, H('comparar')]];
+---
+<Base c={c} pageKey="comparar" title={t.cmpTitle} description={t.cmpDesc} current="comparar" data={slim(all, c, fichaHref(lang))} jsonld={[breadcrumbLd(crumbs)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display">{t.compareThree}</h1>
+    <p class="lead">{t.cmpLead}</p>
+  </section>
+
+  {trio.length >= 2 ? (
+    <section class="cmp" data-compare data-compare-url>
+      <CompareTable list={trio} c={c} pick={all} buy />
+      <p class="note center" style="margin-top:28px">{t.affNotePl}</p>
+    </section>
+  ) : <p class="empty">{t.catPrep}</p>}
+
+  {todos.length > 0 && (
+    <>
+      <h2 class="label">{t.pairs}</h2>
+      <section class="prose" style="max-width:1100px">
+        {TIPOS.map((tipo) => {
+          const lista = todos.filter((p) => p.a.type === tipo);
+          return lista.length > 0 && (
+            <>
+              <h3>{c.tr('typePlural', tipo)}</h3>
+              <ul>{lista.map((p) => <li><a href={H(`par:${p.slug}`)}>{c.d.gen.pairLabel(c.name(p.a), c.name(p.b))}</a></li>)}</ul>
+            </>
+          );
+        })}
+      </section>
+    </>
+  )}
+</Base>

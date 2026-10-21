@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import WatchCard from '../components/WatchCard.astro';
+import Crumbs from '../components/Crumbs.astro';
+import type { Ctx } from '../i18n/types';
+import { getRelojes, slim, TIPOS } from '../lib/watches';
+import { LISTADOS, aplicar } from '../lib/listados';
+import { breadcrumbLd, itemListLd } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx }
+const { c } = Astro.props;
+const { t, lang } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const origenes = [...new Set(all.map((r) => r.origin))].sort();
+const listados = LISTADOS.filter((l) => aplicar(l, all).length >= 3);
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navWatches, H('relojes')]];
+---
+<Base c={c} pageKey="relojes" title={t.catTitle} description={t.catDesc} current="relojes" data={slim(all, c, fichaHref(lang))} jsonld={[breadcrumbLd(crumbs), itemListLd(all, fichaHref(lang), c)]}>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display">{t.catH1}</h1>
+    <p class="lead">{t.catLead}</p>
+  </section>
+
+  <section class="catalog" data-catalog id="buscar">
+    <form class="filters" role="search" aria-label={t.filtersLabel}>
+      <label>{t.search}<input type="search" name="q" placeholder={t.searchPh} /></label>
+      <label>{t.upTo} <output data-max-out>{t.noLimit}</output><input type="range" name="max" min="100" max="1500" step="50" value="1500" /></label>
+      <label>{t.style}<select class="ghost" name="estilo"><option value="">{t.all}</option>{TIPOS.map((x) => <option value={x}>{c.tr('type', x)}</option>)}</select></label>
+      <label>{t.diameter}<select class="ghost" name="diametro"><option value="">{t.all}</option><option value="s">{t.dS}</option><option value="m">{t.dM}</option><option value="l">{t.dL}</option></select></label>
+      <label>{t.origin}<select class="ghost" name="origen"><option value="">{t.all}</option>{origenes.map((o) => <option value={o}>{c.tr('origin', o)}</option>)}</select></label>
+      <label>{t.sort}<select class="ghost" name="orden"><option value="precio">{t.sPrice}</option><option value="reserva">{t.sReserve}</option><option value="diametro">{t.sDiam}</option><option value="hermeticidad">{t.sWr}</option></select></label>
+      <span class="chk"><input id="f-z" type="checkbox" name="zafiro" value="1" /><label for="f-z">{t.fSapphire}</label></span>
+      <span class="chk"><input id="f-w" type="checkbox" name="wr100" value="1" /><label for="f-w">{t.fWr}</label></span>
+      <span class="chk"><input id="f-p" type="checkbox" name="parada" value="1" /><label for="f-p">{t.fHack}</label></span>
+      <span class="count" data-count aria-live="polite">{c.d.gen.count(all.length)}</span>
+    </form>
+    <div class="grid" data-grid>{all.map((r) => <WatchCard r={r} c={c} item />)}</div>
+    <p class="empty" data-empty hidden>{t.noMatch}</p>
+    {all.length === 0 && <p class="empty">{t.catEmpty}</p>}
+  </section>
+
+  {listados.length > 0 && (
+    <>
+      <h2 class="label">{t.listings}</h2>
+      <nav class="links" aria-label={t.listings}>{listados.map((l) => <a class="link" href={H(`listado:${l.key}`)}>{c.d.listados[l.key].h1}</a>)}</nav>
+    </>
+  )}
+</Base>

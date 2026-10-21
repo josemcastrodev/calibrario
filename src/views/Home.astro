@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import Foto from '../components/Foto.astro';
+import Tile from '../components/Tile.astro';
+import Assistant from '../components/Assistant.astro';
+import CompareTable from '../components/CompareTable.astro';
+import Faq from '../components/Faq.astro';
+import type { Ctx } from '../i18n/types';
+import { HREFLANG } from '../i18n/langs';
+import { getRelojes, slim, pares } from '../lib/watches';
+import { AMBIENTE, FOTO_RELOJ, txt } from '../lib/photos';
+import { faqLd, abs } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx }
+const { c } = Astro.props;
+const { t, f, lang } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const get = (id: string) => all.find((r) => r.id === id);
+const destacados = ['seiko-5-sports-gmt-ssk033k1', 'tissot-prx-powermatic-80-35'].map(get).filter((r) => r && FOTO_RELOJ[r.id]) as typeof all;
+const trio = ['seiko-5-sports-gmt-ssk033k1', 'citizen-tsuyosa-nj0150-81z', 'tissot-prx-powermatic-80-35'].map(get).filter(Boolean) as typeof all;
+const populares = pares(all).slice(0, 6);
+const faqs = c.d.faqs.slice(0, 4);
+const T = (k: keyof typeof AMBIENTE) => ({ file: AMBIENTE[k].file, alt: txt(AMBIENTE[k], c).alt });
+const laco = FOTO_RELOJ['laco-augsburg-39-861988'];
+---
+<Base
+  c={c}
+  pageKey="home"
+  title={t.homeTitle}
+  description={t.homeDesc}
+  data={slim(all, c, fichaHref(lang))}
+  jsonld={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Calibrario', url: abs(H('home')), inLanguage: HREFLANG[lang], potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${abs(H('relojes'))}?q={search_term_string}` }, 'query-input': 'required name=search_term_string' } }, { '@context': 'https://schema.org', '@type': 'Organization', name: 'Calibrario', url: abs('/'), logo: abs('/favicon.svg') }, faqLd(faqs)]}
+>
+  <section class="hero" aria-label={t.homeH1}><Foto {...T('prospex')} pos="45% 55%" sizes="100vw" eager /></section>
+
+  <section class="headline">
+    <h1 class="display">{t.homeH1}</h1>
+    <p class="lead">{all.length ? c.d.gen.homeLead(all.length) : t.homeDesc}</p>
+    <div class="acts"><a class="btn" href="#asistente">{t.findMine}</a><a class="link" href={H('relojes')}>{t.seeCatalog}</a></div>
+  </section>
+
+  {destacados.length === 2 && (
+    <>
+      <h2 class="label" id="destacados">{t.featured}</h2>
+      <section class="pair">
+        {destacados.map((r) => {
+          const p = FOTO_RELOJ[r.id];
+          return <Tile file={p.file} alt={txt(p, c).alt} pos={p.pos} t={c.name(r)} d={`${r.caliber}, ${f.h(r.reserveHours)}, ${f.price(r.priceRange)}`} cta={t.seeSheet} href={H(`ficha:${r.id}`)} />;
+        })}
+      </section>
+    </>
+  )}
+
+  {all.length > 0 && <Assistant c={c} />}
+
+  <h2 class="label">{t.whatMatters}</h2>
+  <section class="pair">
+    <Tile {...T('zenith')} pos="40% 50%" t={t.tileCaliber} d={t.tileCaliberD} cta={t.seeCalibers} href={H('calibres')} />
+    <Tile file={laco.file} alt={txt(laco, c).alt} t={t.tileSize} d={t.tileSizeD} cta={t.readGuide} href={H('guia:muneca')} />
+  </section>
+
+  {trio.length === 3 && (
+    <>
+      <h2 class="label" id="comparar">{t.compareThree}</h2>
+      <section class="cmp" data-compare>
+        <CompareTable list={trio} c={c} pick={all} buy />
+        <p class="note">{t.compareNote} <a href={H('comparar')}>{t.openComparator}</a>.</p>
+      </section>
+    </>
+  )}
+
+  {populares.length > 0 && (
+    <>
+      <h2 class="label">{t.popular}</h2>
+      <nav class="links" aria-label={t.popular}>{populares.map((p) => <a class="link" href={H(`par:${p.slug}`)}>{c.d.gen.pairLabel(p.a.model, p.b.model)}</a>)}</nav>
+    </>
+  )}
+
+  <h2 class="label" id="explora">{t.explore}</h2>
+  <section class="three">
+    <a href={H('relojes')}><div class="img"><Foto {...T('invictaCut')} contain sizes="(min-width: 900px) 33vw, 100vw" /></div><h3>{t.exWatches}</h3><p>{t.exWatchesD}</p><span class="link">{t.seeCatalog}</span></a>
+    <a href={H('calibres')}><div class="img"><Foto {...T('longines')} contain sizes="(min-width: 900px) 33vw, 100vw" /></div><h3>{t.exCalibers}</h3><p>{t.exCalibersD}</p><span class="link">{t.seeCalibers}</span></a>
+    <a href={H('guias')}><div class="img"><Foto {...T('citizenCut')} contain sizes="(min-width: 900px) 33vw, 100vw" /></div><h3>{t.exGuides}</h3><p>{t.exGuidesD}</p><span class="link">{t.readGuides}</span></a>
+  </section>
+
+  <Faq faqs={faqs} c={c} />
+</Base>

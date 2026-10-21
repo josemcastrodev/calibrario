@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import CompareTable from '../components/CompareTable.astro';
+import WatchCard from '../components/WatchCard.astro';
+import Faq from '../components/Faq.astro';
+import type { Ctx } from '../i18n/types';
+import { fill } from '../i18n';
+import { getRelojes, pares, paresDe, slim, type Par } from '../lib/watches';
+import { drawing } from '../lib/drawing';
+import { affiliateUrl } from '../lib/amazon';
+import { breadcrumbLd, faqLd } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx; slug: string }
+const { c, slug } = Astro.props;
+const { t, f, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const todos = pares(all);
+const p = todos.find((x) => x.slug === slug) as Par;
+const { a, b } = p;
+const { puntos, paraA, paraB, faqs } = d.gen.versus(a, b, c);
+const otras = [...paresDe(todos, a), ...paresDe(todos, b)].filter((x) => x.slug !== p.slug).filter((x, i, arr) => arr.findIndex((y) => y.slug === x.slug) === i).slice(0, 8);
+const frame = Math.max(a.lugToLugMm ?? a.diameterMm + 6, b.lugToLugMm ?? b.diameterMm + 6) + 6;
+const crumbs: [string, string][] = [['Calibrario', H('home')], [t.navCompare, H('comparar')], [d.gen.pairLabel(a.model, b.model), H(`par:${p.slug}`)]];
+const long = (a.model + b.model).length > 34;
+const draft = !a.verified || !b.verified;
+---
+<Base
+  c={c}
+  pageKey={`par:${p.slug}`}
+  title={fill(t.pairTitle, { a: c.name(a), b: c.name(b) })}
+  description={fill(t.pairDesc, { a: c.name(a), b: c.name(b) })}
+  current="comparar"
+  data={slim(all, c, fichaHref(lang))}
+  noindex={draft}
+  draft={draft}
+  jsonld={[breadcrumbLd(crumbs), faqLd(faqs)]}
+>
+  <Crumbs items={crumbs} c={c} />
+  <section class="ptitle">
+    <h1 class="display" style={long ? 'font-size:clamp(32px,4.4vw,64px)' : undefined}><span class="sub">{c.name(a)}</span><span class="sub" style="font-size:.5em;letter-spacing:.04em;margin:.4em 0">{t.versus}</span><span class="sub">{c.name(b)}</span></h1>
+  </section>
+
+  <section class="trio two">{[a, b].map((r) => <WatchCard r={r} c={c} sizes="(min-width: 900px) 50vw, 50vw" />)}</section>
+
+  <h2 class="label">{t.differences}</h2>
+  <section class="prose">
+    <ul>{puntos.map((x) => <li>{x}</li>)}</ul>
+  </section>
+
+  <section class="pair" style="max-width:1100px;margin:48px auto 0">
+    {([[a, paraA], [b, paraB]] as const).map(([r, por]) => (
+      <div style="background:var(--mist);padding:40px">
+        <h3 class="title" style="font-size:clamp(24px,2.2vw,32px)">{d.gen.chooseThe(r.model)}</h3>
+        <p style="margin-top:12px">{por.length ? d.gen.eligeSi([...por]) : t.sameData}</p>
+        <p style="margin-top:24px"><a class="btn" href={affiliateUrl(r)} rel="sponsored noopener">{t.buy}</a></p>
+        <p style="margin-top:16px"><a class="link" href={H(`ficha:${r.id}`)}>{t.fullSheet}</a></p>
+      </div>
+    ))}
+  </section>
+
+  <section class="redband">
+    <h2 class="display">{t.toScale}</h2>
+    <p class="lead">{t.toScaleLead}</p>
+    <div class="fit"><div class="row2" style="text-align:center">
+      {[a, b].map((r) => (
+        <figure>
+          <div set:html={drawing(r, c, { view: 'front', dims: ['D', 'L'], s: 6, ink: '#fff', frame, id: `v-${r.id}` })} />
+          <figcaption class="ui" style="margin-top:16px">{r.model}{t.colon}{f.mm(r.diameterMm)} · {f.mm(r.lugToLugMm)} {t.lugsShort} · {f.mm(r.thicknessMm)} {t.thickShort}</figcaption>
+        </figure>
+      ))}
+    </div></div>
+  </section>
+
+  <h2 class="label">{t.byDatum}</h2>
+  <section class="cmp"><CompareTable list={[a, b]} c={c} buy /><p class="note">{draft ? t.pairNoteDraft : t.pairNote}</p></section>
+
+  <Faq faqs={faqs} c={c} />
+
+  {otras.length > 0 && (
+    <>
+      <h2 class="label">{t.otherPairs}</h2>
+      <nav class="links" aria-label={t.otherPairs}>{otras.map((x) => <a class="link" href={H(`par:${x.slug}`)}>{d.gen.pairLabel(x.a.model, x.b.model)}</a>)}</nav>
+    </>
+  )}
+</Base>

@@ -1,0 +1,9 @@
+---
+// Migas de pan visibles; el JSON-LD BreadcrumbList lo añade la página con breadcrumbLd().
+import type { Ctx } from '../i18n/types';
+interface Props { items: [string, string][]; c: Ctx }
+const { items, c } = Astro.props;
+---
+<nav class="crumbs" aria-label={c.t.crumbs}>
+  {items.map(([n, href], i) => i < items.length - 1 ? <><a href={href}>{n}</a><span aria-hidden="true">/</span></> : <span aria-current="page">{n}</span>)}
+</nav>

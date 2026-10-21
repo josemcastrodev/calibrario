@@ -1,0 +1,8 @@
+---
+// Preguntas y respuestas en texto plano (el JSON-LD FAQPage lo añade la página con faqLd()).
+import type { Ctx } from '../i18n/types';
+interface Props { faqs: [string, string][]; c: Ctx; title?: string }
+const { faqs, c, title = c.t.faqTitle } = Astro.props;
+---
+<h2 class="label" id="preguntas">{title}</h2>
+<section class="faq">{faqs.map(([q, a]) => <><h3>{q}</h3><p>{a}</p></>)}</section>

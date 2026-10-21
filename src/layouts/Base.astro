@@ -1,0 +1,129 @@
+---
+// Plantilla común a todos los idiomas: <head> con SEO técnico (canonical, hreflang, Open Graph, JSON-LD),
+// aviso de afiliado, navegación con selector de idioma, pie y el script de la página.
+import '@fontsource/playfair-display/latin-400.css';
+import '@fontsource/newsreader/latin-400.css';
+import '@fontsource/newsreader/latin-500.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import Flag from '../components/Flag.astro';
+import type { Ctx } from '../i18n/types';
+import { HREFLANG, OG_LOCALE, LANG_NAME, DEFAULT_LANG, LOCALE } from '../i18n/langs';
+import { abs } from '../lib/seo';
+import { href, alternates, disponibles, existeEn } from '../lib/routes';
+import { LISTADO_DE_ESTILO } from '../lib/listados';
+import { TIPOS } from '../lib/watches';
+
+interface Props {
+  c: Ctx;
+  /** Clave de la página (home, ficha:…, guia:…): da la URL canónica y las de los demás idiomas. */
+  pageKey: string;
+  title: string;
+  description: string;
+  jsonld?: object[];
+  noindex?: boolean;
+  draft?: boolean;
+  data?: unknown;
+  image?: string;
+  current?: 'relojes' | 'comparar' | 'calibres' | 'marcas' | 'guias' | 'asistente';
+  /** Sin canonical ni hreflang (página 404). */
+  bare?: boolean;
+}
+const { c, pageKey, title, description, jsonld = [], noindex = false, draft = false, data, image, current, bare = false } = Astro.props;
+const { lang, t } = c;
+const alts = alternates(pageKey);
+const canonical = abs(href(lang, pageKey));
+const xDefault = alts.find(([l]) => l === DEFAULT_LANG)?.[1] ?? href(lang, pageKey);
+const ogImage = image ? abs(image) : undefined;
+const avail = await disponibles();
+const H = (key: string) => href(lang, key);
+const nav = [['relojes', t.navWatches], ['comparar', t.navCompare], ['calibres', t.navCalibers], ['guias', t.navGuides]] as const;
+const estilos = TIPOS.map((tipo) => {
+  const key = `listado:${LISTADO_DE_ESTILO[tipo]}`;
+  return [existeEn(avail, key) ? H(key) : `${H('relojes')}?estilo=${encodeURIComponent(tipo)}`, c.tr('typePlural', tipo)] as const;
+});
+// Lo que necesita el script: idioma, textos de la interfaz y los relojes (si la página los usa).
+const client = data === undefined ? undefined : {
+  lang, loc: LOCALE[lang],
+  t: { yes: c.f.bool(true), no: c.f.bool(false), bph: c.f.bphUnit, buy: t.buy, seeSheet: t.seeSheet, noLimit: t.noLimit, fitOut: t.fitOut, fitNoData: t.fitNoData, v: [t.fitV1, t.fitV2, t.fitV3, t.fitV4], count: [c.d.gen.count(1), c.d.gen.count(2)], datum: t.datum, labels: c.d.labels, ddSearch: t.ddSearch, ddNone: t.ddNone },
+  w: data,
+};
+---
+<!doctype html>
+<html lang={HREFLANG[lang]}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {!bare && <link rel="canonical" href={canonical} />}
+  {!bare && alts.map(([l, u]) => <link rel="alternate" hreflang={HREFLANG[l]} href={abs(u)} />)}
+  {!bare && <link rel="alternate" hreflang="x-default" href={abs(xDefault)} />}
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Calibrario" />
+  <meta property="og:locale" content={OG_LOCALE[lang]} />
+  {alts.filter(([l]) => l !== lang).map(([l]) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="/favicon.ico?v=3" sizes="32x32" />
+  <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+  <link rel="manifest" href="/site.webmanifest?v=3" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+  {client && <script type="application/json" id="cal-data" set:html={JSON.stringify(client)} />}
+</head>
+<body>
+  <a class="skip" href="#main">{t.skip}</a>
+  <div class="banner"><span>{t.banner}</span><a href={H('afiliado')}>{t.bannerLink}</a></div>
+  {draft && <div class="draft">{t.draft}</div>}
+  <nav class="nav" aria-label={t.navWatches}>
+    <details class="menu">
+      <summary><span class="o">{t.menu}</span><span class="c">{t.close}</span></summary>
+      <div class="panel">
+        {nav.map(([k, label]) => <a href={H(k)}>{label}</a>)}
+        <a href={H('asistente')}>{t.navAssistant}</a>
+        <a href={H('glosario')}>{t.navGlossary}</a>
+        {alts.length > 1 && <div class="mlangs" aria-label={t.language}>{alts.map(([l, u]) => <a href={u} hreflang={HREFLANG[l]} lang={HREFLANG[l]} aria-current={l === lang ? 'true' : undefined}><Flag lang={l} uid={`m-${l}`} />{LANG_NAME[l]}</a>)}</div>}
+      </div>
+    </details>
+    <ul>{nav.map(([k, label]) => <li><a href={H(k)} aria-current={current === k ? 'page' : undefined}>{label}</a></li>)}</ul>
+    <a class="brand" href={H('home')}><Logo /></a>
+    <ul class="right">
+      <li><a href={H('asistente')} aria-current={current === 'asistente' ? 'page' : undefined}>{t.navAssistant}</a></li>
+      <li><a href={`${H('relojes')}#buscar`}>{t.navSearch}</a></li>
+      {alts.length > 1 && (
+        <li class="lng">
+          <details>
+            <summary aria-label={`${t.language}${t.colon}${LANG_NAME[lang]}`}><Flag lang={lang} uid="cur" /><span>{lang.toUpperCase()}</span></summary>
+            <div>{alts.map(([l, u]) => <a href={u} hreflang={HREFLANG[l]} lang={HREFLANG[l]} aria-current={l === lang ? 'true' : undefined}><Flag lang={l} uid={`n-${l}`} />{LANG_NAME[l]}</a>)}</div>
+          </details>
+        </li>
+      )}
+    </ul>
+  </nav>
+  <main id="main"><slot /></main>
+  <footer>
+    <div class="top">
+      <div><p style="max-width:34ch">{t.footTag}</p>{alts.length > 1 && <nav class="langs" aria-label={t.language} style="margin-top:20px">{alts.map(([l, u]) => <a href={u} hreflang={HREFLANG[l]} lang={HREFLANG[l]} aria-current={l === lang ? 'true' : undefined}><Flag lang={l} uid={`f-${l}`} />{LANG_NAME[l]}</a>)}</nav>}</div>
+      <div><b>{t.footWatches}</b>{estilos.map(([u, label]) => <a href={u}>{label}</a>)}<a href={H('relojes')}>{t.footAll}</a></div>
+      <div><b>{t.footTools}</b><a href={H('asistente')}>{t.navAssistant}</a><a href={H('comparar')}>{t.footComparator}</a><a href={H('calibres')}>{t.navCalibers}</a><a href={H('marcas')}>{t.navBrands}</a><a href={H('glosario')}>{t.navGlossary}</a></div>
+      <div><b>{t.footAbout}</b><a href={H('metodo')}>{t.footMethod}</a><a href={H('guias')}>{t.navGuides}</a><a href={H('contacto')}>{t.footContact}</a><a href={H('creditos')}>{t.footCredits}</a></div>
+      <div><b>{t.footLegal}</b><a href={H('afiliado')}>{t.footAffiliate}</a><a href={H('privacidad')}>{t.footPrivacy}</a><a href={H('cookies')}>{t.footCookies}</a><a href={H('legal')}>{t.footLegalNotice}</a></div>
+    </div>
+    <div class="mark"><a href={H('home')}><Logo size="big" /></a></div>
+    <div class="legal">
+      <p>{t.disclosure}</p>
+      <p>© {new Date().getFullYear()} Calibrario. {t.copyData} {t.copyPhotos} (<a href={H('creditos')}>{t.credits}</a>).</p>
+    </div>
+  </footer>
+  <script>import '../scripts/live.js';</script>
+</body>
+</html>

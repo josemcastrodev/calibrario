@@ -1,0 +1,54 @@
+---
+// Páginas de texto: cómo trabajamos, contacto, créditos, aviso de afiliado, privacidad, cookies, aviso legal
+// y el asistente (que añade la banda del asistente encima del texto).
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Rich from '../components/Rich.astro';
+import Assistant from '../components/Assistant.astro';
+import type { Ctx, PageKey } from '../i18n/types';
+import { fill } from '../i18n';
+import { getRelojes, slim } from '../lib/watches';
+import { creditosUsados } from '../lib/photos';
+import { breadcrumbLd } from '../lib/seo';
+import { href, fichaHref } from '../lib/routes';
+interface Props { c: Ctx; pkey: PageKey }
+const { c, pkey } = Astro.props;
+const { t, lang, d } = c;
+const H = (k: string) => href(lang, k);
+const all = await getRelojes();
+const p = d.pages[pkey];
+const crumbs: [string, string][] = [['Calibrario', H('home')], [pkey === 'asistente' ? t.navAssistant : p.h1, H(pkey)]];
+const legal = ['afiliado', 'privacidad', 'cookies', 'legal'].includes(pkey);
+// PENDIENTE: el dueño debe indicar el correo de contacto definitivo.
+const email = 'hola@calibrario.com';
+const fotos = pkey === 'creditos' ? creditosUsados() : [];
+---
+<Base c={c} pageKey={pkey} title={p.title} description={p.description} current={pkey === 'asistente' ? 'asistente' : undefined} data={pkey === 'asistente' ? slim(all, c, fichaHref(lang)) : undefined} jsonld={[breadcrumbLd(crumbs)]}>
+  <Crumbs items={crumbs} c={c} />
+  {pkey === 'asistente' ? (
+    <>
+      <div class="flush"><Assistant c={c} h="h1" /></div>
+      <h2 class="label">{t.howItChooses}</h2>
+    </>
+  ) : (
+    <section class="ptitle">
+      <h1 class="display" style={legal ? 'font-size:clamp(34px,5vw,72px)' : undefined}>{p.h1}</h1>
+      {p.lead && <p class="lead">{p.lead}</p>}
+      {p.updated && <p class="note">{fill(t.updated, { x: p.updated })}{t.legalNote && ` ${t.legalNote}`}</p>}
+      {pkey === 'contacto' && <p style="margin-top:32px"><a class="btn" href={`mailto:${email}?subject=${encodeURIComponent(t.mailSubject)}`}>{fill(t.writeTo, { x: email })}</a></p>}
+    </section>
+  )}
+  {p.body.length > 0 && <article class="prose"><Rich blocks={p.body} c={c} all={all} /></article>}
+  {pkey === 'creditos' && (
+    <section class="cmp">
+      <table class="data list">
+        <thead><tr><th scope="col">{t.thPhoto}</th><th scope="col">{t.thAuthor}</th><th scope="col">{t.thLicense}</th></tr></thead>
+        <tbody>
+          {fotos.map(({ c: cr }) => (
+            <tr><th scope="row"><a href={cr!.page} rel="noopener">{cr!.title}</a></th><td>{cr!.creator ?? t.noAuthor}{cr!.via ? `, ${t.via} ${cr!.via}` : ''}</td><td><a href={cr!.licenseUrl} rel="noopener license">{cr!.license}</a></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  )}
+</Base>
