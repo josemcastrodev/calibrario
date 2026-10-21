@@ -41,6 +41,12 @@ const reloj = z.object({
   verifiedAt: z.string().optional(),
   /** Páginas oficiales (o su copia archivada) de las que salen los datos. */
   sources: z.array(z.string().url()).optional(),
+  /** Datos que la marca no publica y salen de la documentación oficial del fabricante del calibre. */
+  caliberDoc: z.object({
+    maker: z.string(),
+    url: z.string().url(),
+    fields: z.array(z.enum(['bph', 'hacking', 'handWinding', 'reserveHours'])),
+  }).optional(),
 });
 
 export type Reloj = z.infer<typeof reloj>;

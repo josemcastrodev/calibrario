@@ -32,12 +32,27 @@
     "complications": [
       "Fecha"
     ],
-    "exhibitionCaseback": true,
+    "exhibitionCaseback": null,
     "images": [],
     "summary": "Un automático con calibre japonés NH35A, 200 m y bisel giratorio por poco más de 100 €: la forma más barata de empezar.",
-    "verified": false,
-    "dataNotes": "Comprobado en invictawatch.eu: NH35A, 40 mm, cristal mineral, 200 m, brazalete de 20 mm. Invicta no publica grosor, reserva ni frecuencia.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Invicta no publica grosor, entre asas ni el tipo de fondo. El bisel giratorio se ve en las fotos oficiales.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://invictawatch.eu/products/reloj-invicta-pro-diver-8926ob",
+      "https://www.timemodule.com/en/product_line_up/mechanical/mechanical/mechanical_NH0_NH3/"
+    ],
+    "caliberDoc": {
+      "maker": "Time Module (Seiko Instruments)",
+      "url": "https://www.timemodule.com/upload/category/24/technical_guide/NH35_TG.pdf",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding",
+        "reserveHours"
+      ]
+    }
   },
   {
     "id": "citizen-promaster-fugu-ny0040-09ee",

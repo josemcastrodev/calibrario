@@ -155,6 +155,7 @@ export const uiEs = {
   sourcesLabel: 'Fuentes:',
   archivedCopy: 'copia archivada',
   dashNote: 'Un guion significa que el fabricante no publica ese dato.',
+  caliberDocNote: 'Los datos marcados con † no los publica la marca: salen de la documentación oficial del fabricante del calibre, {x}.',
   theCaliber: 'El calibre',
   rivalsTitle: 'Frente a sus rivales',
   rivalsNote: 'Los relojes del mismo estilo con la gama más cercana. En rojo, el mejor dato de cada fila.',

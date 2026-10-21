@@ -79,6 +79,7 @@ export const en: Dict = {
     sourcesLabel: 'Sources:',
     archivedCopy: 'archived copy',
     dashNote: 'A dash means the manufacturer does not publish that figure.',
+    caliberDocNote: 'Figures marked † are not published by the brand: they come from the official documentation of the movement maker, {x}.',
     theCaliber: 'The movement', rivalsTitle: 'Against its rivals', rivalsNote: 'Watches of the same style with the nearest price band. In red, the best figure in each row.',
     comparisons: 'Comparisons', understand: 'Making sense of the specs',
     tReserve: 'Power reserve', tReserveD: 'How long it keeps running off the wrist, and why 80 hours changes daily life.',

@@ -79,6 +79,7 @@ export const de: Dict = {
     sourcesLabel: 'Quellen:',
     archivedCopy: 'archivierte Kopie',
     dashNote: 'Ein Strich bedeutet, dass der Hersteller diesen Wert nicht angibt.',
+    caliberDocNote: 'Mit † markierte Werte veröffentlicht die Marke nicht: Sie stammen aus der offiziellen Dokumentation des Kaliberherstellers {x}.',
     theCaliber: 'Das Kaliber', rivalsTitle: 'Im Vergleich mit Konkurrenten', rivalsNote: 'Uhren gleichen Stils mit der nächstgelegenen Preisspanne. In Rot der beste Wert jeder Zeile.',
     comparisons: 'Vergleiche', understand: 'Das Datenblatt verstehen',
     tReserve: 'Die Gangreserve', tReserveD: 'Wie lange die Uhr abgelegt weiterläuft und warum 80 Stunden den Alltag verändern.',
