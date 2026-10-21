@@ -2268,15 +2268,15 @@
       1060,
       1130
     ],
-    "caliber": "ETA 2836-2",
-    "caliberMaker": "ETA",
-    "reserveHours": 38,
-    "bph": 28800,
+    "caliber": "Caliber 80",
+    "caliberMaker": "ETA, base Powermatic 80",
+    "reserveHours": 80,
+    "bph": 21600,
     "crystal": "Zafiro",
-    "waterResistanceM": 100,
+    "waterResistanceM": 50,
     "diameterMm": 40,
-    "thicknessMm": 10.84,
-    "lugToLugMm": 47,
+    "thicknessMm": 10.8,
+    "lugToLugMm": null,
     "lugWidthMm": 21,
     "hacking": true,
     "handWinding": true,
@@ -2288,13 +2288,13 @@
     "strap": "Acero",
     "dialColor": "Negro",
     "complications": [
-      "Día y fecha"
+      "Fecha"
     ],
     "exhibitionCaseback": true,
     "images": [],
-    "summary": "Un clásico de Mido desde 1959, con caja monobloque, día y fecha, cristal de zafiro abombado y 100 m.",
+    "summary": "Un clásico de Mido desde 1959, con el Caliber 80 de 80 horas, cristal de zafiro, fondo visto y esfera negra degradada.",
     "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en midowatches.com.",
+    "dataNotes": "Ficha oficial archivada de midowatches.com (02/2021): Caliber 80 (base ETA C07.611), 80 h, zafiro, 50 m, 40 mm, 10,8 mm, 21 mm entre asas, fecha y fondo visto. Falta una fuente oficial de la frecuencia del calibre.",
     "amazonChecked": "2026-10-21"
   },
   {
