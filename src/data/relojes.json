@@ -404,17 +404,17 @@
       370,
       420
     ],
-    "caliber": "Laco 21",
-    "caliberMaker": "Miyota, base 821A",
-    "reserveHours": 40,
+    "caliber": "Laco 2S",
+    "caliberMaker": "Miyota, base 82S0",
+    "reserveHours": 42,
     "bph": 21600,
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 39,
-    "thicknessMm": 11.6,
-    "lugToLugMm": 47,
-    "lugWidthMm": 20,
-    "hacking": false,
+    "thicknessMm": 11.55,
+    "lugToLugMm": 46.5,
+    "lugWidthMm": 18,
+    "hacking": true,
     "handWinding": true,
     "origin": "Alemania",
     "movementOrigin": "Japón",
@@ -424,12 +424,27 @@
     "strap": "Piel",
     "dialColor": "Negro",
     "complications": [],
-    "exhibitionCaseback": false,
+    "exhibitionCaseback": true,
     "images": [],
     "summary": "Un reloj de aviador alemán con esfera tipo B, la de los minutos en el anillo exterior, en 39 mm y con cristal de zafiro.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en laco.de.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Según Laco, la versión actual lleva el calibre Laco 2S (base Miyota 82S0), con parada de segundero y fondo de zafiro. La ficha de Amazon todavía describe la versión anterior con Laco 21 (Miyota 821A), que no para el segundero.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.laco.de/en/watches/pilot-watches-basic/augsburg-39/861988",
+      "https://miyotamovement.com/product/82S0/"
+    ],
+    "caliberDoc": {
+      "maker": "Miyota",
+      "url": "https://miyotamovement.com/product/82S0/",
+      "kind": "oficial",
+      "fields": [
+        "bph",
+        "handWinding",
+        "reserveHours"
+      ]
+    }
   },
   {
     "id": "laco-aachen-42-861690",
@@ -442,17 +457,17 @@
       370,
       420
     ],
-    "caliber": "Laco 21",
-    "caliberMaker": "Miyota, base 821A",
-    "reserveHours": 40,
+    "caliber": "Laco 2S",
+    "caliberMaker": "Miyota, base 82S0",
+    "reserveHours": 42,
     "bph": 21600,
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 42,
-    "thicknessMm": 12.8,
+    "thicknessMm": 11.75,
     "lugToLugMm": 50,
     "lugWidthMm": 20,
-    "hacking": false,
+    "hacking": true,
     "handWinding": true,
     "origin": "Alemania",
     "movementOrigin": "Japón",
@@ -462,12 +477,27 @@
     "strap": "Piel",
     "dialColor": "Negro",
     "complications": [],
-    "exhibitionCaseback": false,
+    "exhibitionCaseback": true,
     "images": [],
     "summary": "La esfera tipo A de los relojes de aviador clásicos, con números grandes y un triángulo a las 12, en 42 mm.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en laco.de.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La referencia actual de Laco es 861690.2, con calibre Laco 2S (base Miyota 82S0), parada de segundero y fondo de zafiro. La ficha de Amazon todavía describe la versión anterior con Laco 21 (Miyota 821A), que no para el segundero.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.laco.de/en/watches/pilot-watches-basic/aachen-42/861690.2",
+      "https://miyotamovement.com/product/82S0/"
+    ],
+    "caliberDoc": {
+      "maker": "Miyota",
+      "url": "https://miyotamovement.com/product/82S0/",
+      "kind": "oficial",
+      "fields": [
+        "bph",
+        "handWinding",
+        "reserveHours"
+      ]
+    }
   },
   {
     "id": "seiko-prospex-turtle-srpe99k1",
@@ -698,7 +728,7 @@
       540,
       590
     ],
-    "caliber": "Powermatic 80.111",
+    "caliber": "Powermatic 80",
     "caliberMaker": "ETA, Swatch Group",
     "reserveHours": 80,
     "bph": 21600,
@@ -723,9 +753,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El PRX automático en 35 mm: el mismo calibre de 80 horas y el brazalete integrado, para muñecas finas o para un tamaño clásico.",
-    "verified": false,
-    "dataNotes": "Retirado de la web de Tissot. Su ficha archivada (04/2024) da esfera verde menta, 10,9 mm, 100 m, zafiro, 80 h y fondo visto. Falta la frecuencia.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Tissot ha retirado este modelo de su web: datos de su ficha oficial archivada (04/2024).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20240426130740/https://www.tissotwatches.com/en-gb/t1372071109101.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "tissot-chemin-des-tourelles-powermatic-80",
@@ -738,15 +782,15 @@
       570,
       630
     ],
-    "caliber": "Powermatic 80.111",
+    "caliber": "Powermatic 80",
     "caliberMaker": "ETA, Swatch Group",
     "reserveHours": 80,
     "bph": 21600,
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 39,
-    "thicknessMm": 11.2,
-    "lugToLugMm": 46,
+    "thicknessMm": 11.22,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -763,9 +807,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un reloj de vestir suizo de 39 mm con 80 horas de reserva, zafiro y fondo visto, sobre brazalete de acero.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en tissotwatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Tissot ha retirado este modelo de su web: datos de su ficha oficial archivada (01/2025).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20250117121515/https://www.tissotwatches.com/en-gb/T1398071103100.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "tissot-seastar-1000-powermatic-80-40",
@@ -778,7 +836,7 @@
       590,
       650
     ],
-    "caliber": "Powermatic 80.111",
+    "caliber": "Powermatic 80",
     "caliberMaker": "ETA, Swatch Group",
     "reserveHours": 80,
     "bph": 21600,
@@ -803,9 +861,22 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "La versión de 40 mm del buceo de Tissot: 300 m, 80 horas de reserva y zafiro, más llevable que el Seastar de 43 mm.",
-    "verified": false,
-    "dataNotes": "Comprobado en tissotwatches.com (EE. UU.): 80 h, zafiro, 300 m, 40 mm, 12,48 mm, 20 mm entre asas, fondo visto. Falta que Tissot publique la frecuencia del calibre.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://www.tissotwatches.com/en-us/T1208072205100.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "seiko-presage-style-60s-gmt-ssk013j1",
@@ -870,8 +941,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 100,
     "diameterMm": 42,
-    "thicknessMm": 12,
-    "lugToLugMm": 50,
+    "thicknessMm": null,
+    "lugToLugMm": null,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -888,9 +959,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El reloj de campo suizo clásico en 42 mm: 80 horas de reserva, espiral Nivachron, zafiro, 100 m y brazalete de acero.",
-    "verified": false,
-    "dataNotes": "Grosor y entre asas estimados. Comprobar en hamiltonwatch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Hamilton no es accesible desde España: datos de su ficha oficial archivada (06/2022), que no da el grosor. El H-10 es la versión de Hamilton del Powermatic 80.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20220627232217/https://www.hamiltonwatch.com/en-us/h70515137-khaki-field-auto.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "tissot-sideral-s-powermatic-80",
@@ -903,7 +988,7 @@
       730,
       790
     ],
-    "caliber": "Powermatic 80.111",
+    "caliber": "Powermatic 80",
     "caliberMaker": "ETA, Swatch Group",
     "reserveHours": 80,
     "bph": 21600,
@@ -911,8 +996,8 @@
     "waterResistanceM": 300,
     "diameterMm": 41,
     "thicknessMm": 14.4,
-    "lugToLugMm": 47,
-    "lugWidthMm": null,
+    "lugToLugMm": null,
+    "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
     "origin": "Suiza",
@@ -925,11 +1010,11 @@
     "complications": [
       "Fecha"
     ],
-    "exhibitionCaseback": false,
+    "exhibitionCaseback": true,
     "images": [],
     "summary": "Caja de carbono forjado, 300 m y 80 horas de reserva: un deportivo suizo ligero y distinto al resto del catálogo.",
     "verified": false,
-    "dataNotes": "Entre asas, fecha y fondo por confirmar en tissotwatches.com.",
+    "dataNotes": "Retirado de la web de Tissot. Su ficha archivada (02/2025) da 41 mm, 14,4 mm, 300 m, zafiro, fondo visto, 80 h y correa de caucho azul, pero no menciona el bisel giratorio.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -995,8 +1080,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 40,
-    "thicknessMm": 11.1,
-    "lugToLugMm": 47,
+    "thicknessMm": null,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1010,12 +1095,26 @@
     "complications": [
       "Fecha"
     ],
-    "exhibitionCaseback": true,
+    "exhibitionCaseback": null,
     "images": [],
     "summary": "Un Hamilton de vestir con brazalete, 80 horas de reserva y fondo visto, que sirve igual para la oficina que para el fin de semana.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado; fecha por confirmar en hamiltonwatch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Hamilton no es accesible desde España: datos de su ficha oficial archivada (01/2021), que no da el grosor ni el tipo de fondo.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20210117224229/https://www.hamiltonwatch.com/en-us/h42535130-jazzmaster-auto.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "mido-ocean-star-200",
@@ -1054,7 +1153,7 @@
     "images": [],
     "summary": "Buceo suizo de 200 m con bisel de cerámica y 80 horas de reserva, con una caja más fina de lo que su tamaño hace pensar.",
     "verified": false,
-    "dataNotes": "Ficha oficial archivada de midowatches.com (01/2024): Caliber 80 (ETA), 80 h, zafiro, 200 m, 42,5 mm, 12,3 mm, 22 mm entre asas, día y fecha. Falta que Mido publique la frecuencia.",
+    "dataNotes": "Ficha oficial archivada de midowatches.com (01/2024): Caliber 80 (ETA), 80 h, zafiro, 200 m, 42,5 mm, 12,3 mm, 22 mm entre asas, día y fecha. Falta que Mido confirme el bisel giratorio.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -1704,7 +1803,7 @@
     "waterResistanceM": 100,
     "diameterMm": 38,
     "thicknessMm": 11.5,
-    "lugToLugMm": 47,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1721,9 +1820,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El reloj de campo suizo en 38 mm: 80 horas de reserva, zafiro y una talla que sienta bien a casi cualquier muñeca.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en hamiltonwatch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Hamilton no es accesible desde España: datos de su ficha oficial archivada (10/2023). El H-10 es la versión de Hamilton del Powermatic 80.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20231002141440/https://www.hamiltonwatch.com/en-us/h70455533-khaki-field-auto.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "hamilton-jazzmaster-thinline-auto-h38525811",
@@ -1781,10 +1894,10 @@
     "reserveHours": 80,
     "bph": 21600,
     "crystal": "Zafiro",
-    "waterResistanceM": 100,
+    "waterResistanceM": 50,
     "diameterMm": 40,
-    "thicknessMm": 12,
-    "lugToLugMm": 47,
+    "thicknessMm": 11.15,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1794,16 +1907,30 @@
     "bezelNote": null,
     "caseMaterial": "Acero",
     "strap": "Acero",
-    "dialColor": "Plata",
+    "dialColor": "Negro",
     "complications": [
       "Día y fecha"
     ],
     "exhibitionCaseback": true,
     "images": [],
     "summary": "El Khaki de campo con día y fecha, brazalete de acero y 80 horas de reserva, en 40 mm.",
-    "verified": false,
-    "dataNotes": "Calibre, hermeticidad y entre asas por confirmar en hamiltonwatch.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Hamilton no es accesible desde España: datos de su ficha oficial archivada (07/2025). El H-40 es la versión con día y fecha del Powermatic 80 de Hamilton.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20250717094812/https://www.hamiltonwatch.com/en-us/h64455133-khaki-field-king-auto.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "hamilton-khaki-navy-scuba-auto-h82335131",
@@ -1856,7 +1983,7 @@
       730,
       790
     ],
-    "caliber": "Powermatic 80.111",
+    "caliber": "Powermatic 80",
     "caliberMaker": "ETA, Swatch Group",
     "reserveHours": 80,
     "bph": 21600,
@@ -1864,7 +1991,7 @@
     "waterResistanceM": 600,
     "diameterMm": 46,
     "thicknessMm": 16.25,
-    "lugToLugMm": 51,
+    "lugToLugMm": null,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -1878,12 +2005,26 @@
     "complications": [
       "Fecha"
     ],
-    "exhibitionCaseback": false,
+    "exhibitionCaseback": true,
     "images": [],
     "summary": "El buceo profesional de Tissot: 600 m, válvula de helio y bisel de cerámica; grande, con 46 mm y más de 16 mm de grosor.",
-    "verified": false,
-    "dataNotes": "Versión del calibre y entre asas por confirmar en tissotwatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Tissot ha retirado este modelo de su web: datos de su ficha oficial archivada (11/2024).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20241111062039/https://www.tissotwatches.com/en-gb/T1206071744101.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "tissot-carson-premium-powermatic-80",
@@ -1896,7 +2037,7 @@
       770,
       830
     ],
-    "caliber": "Powermatic 80.111",
+    "caliber": "Powermatic 80",
     "caliberMaker": "ETA, Swatch Group",
     "reserveHours": 80,
     "bph": 21600,
@@ -1904,7 +2045,7 @@
     "waterResistanceM": 50,
     "diameterMm": 40,
     "thicknessMm": 10.25,
-    "lugToLugMm": 47,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -1921,9 +2062,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un Tissot de vestir de 40 mm y poco más de 10 mm de grosor, con 80 horas de reserva, zafiro y brazalete de acero.",
-    "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en tissotwatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "Tissot ha retirado este modelo de su web: datos de su ficha oficial archivada (01/2025).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20250119163251/https://www.tissotwatches.com/en-gb/T1224071103100.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "citizen-promaster-fujitsubo-nb6025-59h",
@@ -2115,8 +2270,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 50,
     "diameterMm": 39,
-    "thicknessMm": 9.93,
-    "lugToLugMm": 46,
+    "thicknessMm": 9.9,
+    "lugToLugMm": null,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -2133,9 +2288,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un Mido de vestir de 39 mm y menos de 10 mm de grosor con 80 horas de reserva: clásico, pero pensado para llevarlo a diario.",
-    "verified": false,
-    "dataNotes": "Amazon indica cristal mineral; Mido publica zafiro. Entre asas estimado.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Mido no es accesible desde España: datos de su ficha oficial archivada (06/2023). El Caliber 80 es la versión de Mido del Powermatic 80.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20230602221152/https://www.midowatches.com/au/baroncelli-signature-m0374071603101.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "mido-baroncelli-heritage-m027-407-16-010-00",
@@ -2188,16 +2357,16 @@
       1150,
       1230
     ],
-    "caliber": "Caliber 80",
-    "caliberMaker": "ETA, base Powermatic 80",
-    "reserveHours": 80,
+    "caliber": "Mido Automatic ETA",
+    "caliberMaker": "ETA",
+    "reserveHours": 72,
     "bph": 21600,
     "crystal": "Zafiro",
     "waterResistanceM": 200,
     "diameterMm": 39,
     "thicknessMm": 10.5,
-    "lugToLugMm": 46,
-    "lugWidthMm": 19,
+    "lugToLugMm": null,
+    "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
     "origin": "Suiza",
@@ -2212,9 +2381,9 @@
     ],
     "exhibitionCaseback": false,
     "images": [],
-    "summary": "El Ocean Star en 39 mm y 10,5 mm de grosor: un buceo suizo de 200 m con 80 horas de reserva que entra bajo la camisa.",
+    "summary": "El Ocean Star en 39 mm y 10,5 mm de grosor: un buceo suizo de 200 m con 72 horas de reserva que entra bajo la camisa.",
     "verified": false,
-    "dataNotes": "Fecha y entre asas por confirmar en midowatches.com.",
+    "dataNotes": "Ficha oficial archivada de midowatches.com (08/2024): 39 mm, 10,5 mm, 200 m, zafiro, 20 mm entre asas, esfera gris degradada y 72 h de reserva (no 80). Mido no nombra el calibre: falta saber cuál es y su frecuencia.",
     "amazonChecked": "2026-10-21"
   },
   {
@@ -2235,8 +2404,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 200,
     "diameterMm": 40.5,
-    "thicknessMm": 13.43,
-    "lugToLugMm": 48,
+    "thicknessMm": 13.4,
+    "lugToLugMm": null,
     "lugWidthMm": 21,
     "hacking": true,
     "handWinding": true,
@@ -2250,12 +2419,26 @@
     "complications": [
       "Día y fecha"
     ],
-    "exhibitionCaseback": false,
+    "exhibitionCaseback": null,
     "images": [],
     "summary": "Un buceo de inspiración sesentera con cristal abombado, 200 m y 80 horas de reserva: el más clásico de la serie Ocean Star.",
-    "verified": false,
-    "dataNotes": "Complicaciones y entre asas por confirmar en midowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Mido no es accesible desde España: datos de su ficha oficial archivada (05/2023): Caliber 80 (base ETA C07.621), caja con PVD de oro rosa.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20230528223508/https://www.midowatches.com/ca-en/ocean-star-tribute-m0268302105100.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "mido-commander-ii-m021-407-11-411-00",
@@ -2293,9 +2476,23 @@
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Un clásico de Mido desde 1959, con el Caliber 80 de 80 horas, cristal de zafiro, fondo visto y esfera negra degradada.",
-    "verified": false,
-    "dataNotes": "Ficha oficial archivada de midowatches.com (02/2021): Caliber 80 (base ETA C07.611), 80 h, zafiro, 50 m, 40 mm, 10,8 mm, 21 mm entre asas, fecha y fondo visto. Falta una fuente oficial de la frecuencia del calibre.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Mido no es accesible desde España: datos de su ficha oficial archivada (02/2021): Caliber 80 (base ETA C07.611).",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20210228071414/https://www.midowatches.com/ca-en/commander-gradient-m0214071141100.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "mido-multifort-tv-big-date-m049-526-17-081-00",
@@ -2315,8 +2512,8 @@
     "crystal": "Zafiro",
     "waterResistanceM": 100,
     "diameterMm": 40,
-    "thicknessMm": 11.48,
-    "lugToLugMm": 47,
+    "thicknessMm": 11.5,
+    "lugToLugMm": null,
     "lugWidthMm": 22,
     "hacking": true,
     "handWinding": true,
@@ -2326,16 +2523,30 @@
     "bezelNote": null,
     "caseMaterial": "Acero",
     "strap": "Caucho",
-    "dialColor": "Plata",
+    "dialColor": "Gris",
     "complications": [
       "Gran fecha"
     ],
     "exhibitionCaseback": true,
     "images": [],
     "summary": "Caja de televisor de los años setenta, gran fecha a las 12 y 80 horas de reserva: el Mido más original del catálogo.",
-    "verified": false,
-    "dataNotes": "Versión del calibre y entre asas por confirmar en midowatches.com.",
-    "amazonChecked": "2026-10-21"
+    "verified": true,
+    "dataNotes": "La web de Mido no es accesible desde España: datos de su ficha oficial archivada (09/2023): Caliber 80 (base ETA C07.651), correa de caucho naranja.",
+    "amazonChecked": "2026-10-21",
+    "verifiedAt": "2026-10-21",
+    "sources": [
+      "https://web.archive.org/web/20230926133436/https://www.midowatches.com/ca-en/multifort-tv-big-date-m0495261708100.html"
+    ],
+    "caliberDoc": {
+      "maker": "Caliber Corner",
+      "url": "https://calibercorner.com/eta-powermatic-80-611/",
+      "kind": "especializada",
+      "fields": [
+        "bph",
+        "hacking",
+        "handWinding"
+      ]
+    }
   },
   {
     "id": "alpina-startimer-pilot-automatic-al-525nw4s26",
@@ -2428,15 +2639,15 @@
       950,
       1010
     ],
-    "caliber": "Laco 24",
-    "caliberMaker": "ETA, base 2824-2",
+    "caliber": "Laco 200",
+    "caliberMaker": "Sellita, base SW200",
     "reserveHours": 38,
     "bph": 28800,
     "crystal": "Zafiro",
-    "waterResistanceM": 50,
+    "waterResistanceM": 100,
     "diameterMm": 42,
     "thicknessMm": 12.8,
-    "lugToLugMm": 52,
+    "lugToLugMm": 50,
     "lugWidthMm": 20,
     "hacking": true,
     "handWinding": true,
@@ -2450,9 +2661,9 @@
     "complications": [],
     "exhibitionCaseback": false,
     "images": [],
-    "summary": "Un aviador de la línea Original de Laco, con calibre suizo de base ETA 2824-2 y parada de segundero, en 42 mm.",
+    "summary": "Un aviador de la línea Original de Laco con esfera tipo B, calibre Laco 200 de base Sellita SW200 y 100 m, en 42 mm.",
     "verified": false,
-    "dataNotes": "Entre asas estimado. Comprobar en laco.de.",
+    "dataNotes": "Según laco.de: Laco 200 (base Sellita SW200), 42 mm, 12,8 mm, 50 mm entre asas, 100 m, fondo cerrado y correa de piel. La ficha de Amazon todavía describe la versión anterior con Laco 24 (ETA 2824-2) y 50 m. Falta la documentación de Sellita (su web está en mantenimiento).",
     "amazonChecked": "2026-10-21"
   }
 ]

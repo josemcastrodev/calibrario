@@ -84,6 +84,7 @@ export const fr: Dict = {
     archivedCopy: 'copie archivée',
     dashNote: 'Un tiret signifie que le fabricant ne publie pas cette donnée.',
     caliberDocNote: 'Les données marquées † ne sont pas publiées par la marque : elles proviennent de la documentation officielle du fabricant du calibre, {x}.',
+    caliberDocNoteSpec: 'Les données marquées † ne sont publiées ni par la marque ni par le fabricant du calibre : elles proviennent d’une source technique spécialisée, {x}.',
     theCaliber: 'Le calibre', rivalsTitle: 'Face à ses concurrentes', rivalsNote: 'Les montres du même style dans la gamme de prix la plus proche. En rouge, la meilleure valeur de chaque ligne.',
     comparisons: 'Comparatifs', understand: 'Pour comprendre la fiche',
     tReserve: 'La réserve de marche', tReserveD: 'Combien de temps elle tourne à l’arrêt, et pourquoi 80 heures changent le quotidien.',

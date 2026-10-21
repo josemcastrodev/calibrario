@@ -45,6 +45,8 @@ const reloj = z.object({
   caliberDoc: z.object({
     maker: z.string(),
     url: z.string().url(),
+    /** «oficial»: documentación del fabricante del calibre. «especializada»: fuente técnica independiente. */
+    kind: z.enum(['oficial', 'especializada']).default('oficial'),
     fields: z.array(z.enum(['bph', 'hacking', 'handWinding', 'reserveHours'])),
   }).optional(),
 });

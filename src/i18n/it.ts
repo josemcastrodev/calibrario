@@ -87,6 +87,7 @@ export const it: Dict = {
     archivedCopy: 'copia archiviata',
     dashNote: 'Un trattino significa che il produttore non pubblica quel dato.',
     caliberDocNote: 'I dati segnati con † non sono pubblicati dal marchio: provengono dalla documentazione ufficiale del produttore del calibro, {x}.',
+    caliberDocNoteSpec: 'I dati segnati con † non sono pubblicati né dal marchio né dal produttore del calibro: provengono da una fonte tecnica specializzata, {x}.',
     theCaliber: 'Il calibro', rivalsTitle: 'Contro i rivali', rivalsNote: 'Gli orologi dello stesso stile con la fascia di prezzo più vicina. In rosso, il dato migliore di ogni riga.',
     comparisons: 'Confronti', understand: 'Per capire la scheda',
     tReserve: 'La riserva di carica', tReserveD: 'Quanto resta in funzione da fermo e perché 80 ore cambiano la quotidianità.',

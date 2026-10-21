@@ -116,7 +116,7 @@ const checked = r.amazonChecked ? new Date(`${r.amazonChecked}T12:00:00Z`).toLoc
   {r.verified && r.verifiedAt ? (
     <div class="note center sources" style="padding:0 24px">
       <p>{fill(t.verifiedOn, { d: new Date(r.verifiedAt + 'T12:00:00Z').toLocaleDateString(LOCALE[lang], { day: 'numeric', month: 'long', year: 'numeric' }) })} {t.dashNote}{lang === 'es' && r.dataNotes ? ` ${r.dataNotes}` : ''}</p>
-      {r.caliberDoc && <p>{fill(t.caliberDocNote, { x: r.caliberDoc.maker })} <a href={r.caliberDoc.url} rel="nofollow noopener" target="_blank">{fuente(r.caliberDoc.url)}</a></p>}
+      {r.caliberDoc && <p>{fill(r.caliberDoc.kind === 'especializada' ? t.caliberDocNoteSpec : t.caliberDocNote, { x: r.caliberDoc.maker })} <a href={r.caliberDoc.url} rel="nofollow noopener" target="_blank">{fuente(r.caliberDoc.url)}</a></p>}
       {r.sources && r.sources.length > 0 && <p>{t.sourcesLabel} {r.sources.map((u, i) => <>{i > 0 && ', '}<a href={u} rel="nofollow noopener" target="_blank">{fuente(u)}</a></>)}</p>}
     </div>
   ) : (
