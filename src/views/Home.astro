@@ -30,7 +30,7 @@ const laco = FOTO_RELOJ['laco-augsburg-39-861988'];
   title={t.homeTitle}
   description={t.homeDesc}
   data={slim(all, c, fichaHref(lang))}
-  jsonld={[{ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Calibrario', url: abs(H('home')), inLanguage: HREFLANG[lang], potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${abs(H('relojes'))}?q={search_term_string}` }, 'query-input': 'required name=search_term_string' } }, { '@context': 'https://schema.org', '@type': 'Organization', name: 'Calibrario', url: abs('/'), logo: abs('/favicon.svg') }, faqLd(faqs)]}
+  jsonld={[{ '@context': 'https://schema.org', '@type': 'WebSite', '@id': `${abs('/')}#web`, name: 'Calibrario', alternateName: 'calibrario.com', url: abs(H('home')), inLanguage: HREFLANG[lang], publisher: { '@id': `${abs('/')}#org` }, potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${abs(H('relojes'))}?q={search_term_string}` }, 'query-input': 'required name=search_term_string' } }, { '@context': 'https://schema.org', '@type': 'Organization', '@id': `${abs('/')}#org`, name: 'Calibrario', alternateName: 'calibrario.com', url: abs('/'), logo: { '@type': 'ImageObject', url: abs('/icon-512.png'), width: 512, height: 512 }, description: t.footTag }, faqLd(faqs)]}
 >
   <section class="hero" aria-label={t.homeH1}><Foto {...T('prospex')} pos="45% 55%" sizes="100vw" eager /></section>
 

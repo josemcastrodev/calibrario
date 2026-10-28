@@ -47,8 +47,8 @@ function fitTitle(t0: string) {
   if (i < 20) return t1;
   // Se queda con la primera parte del subtítulo («: ficha técnica»), que lleva el idioma y la palabra clave.
   const head = t1.slice(0, i), first = t1.slice(i + 2).split(/,| y | and | und | et | e | o | or | oder | ou /)[0];
-  const corto = `${head}: ${first}`;
-  return corto.length <= 60 ? corto : head;
+  // Aunque pase de 60, se conserva el subtítulo: sin él, los nombres largos daban el mismo título en los cinco idiomas.
+  return `${head}: ${first}`;
 }
 /** Descripciones de 158 caracteres como mucho: se corta en la última frase entera o, si no, en una palabra. */
 function fitDesc(d0: string) {
