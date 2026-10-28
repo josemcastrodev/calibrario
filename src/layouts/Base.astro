@@ -109,6 +109,8 @@ const client = data === undefined ? undefined : {
   <link rel="sitemap" href="/sitemap.xml" />
   {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
   {client && <script type="application/json" id="cal-data" set:html={JSON.stringify(client)} />}
+  <!-- Cloudflare Web Analytics: visitas reales, sin cookies (no necesita aviso de consentimiento). -->
+  <script defer is:inline src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "f741981efcdc43029d6a3c243ba9f5f7"}'></script>
 </head>
 <body>
   <a class="skip" href="#main">{t.skip}</a>
