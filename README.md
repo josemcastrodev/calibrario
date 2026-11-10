@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/cover.jpg" alt="Calibrario · Comparador de relojes automáticos · Astro, TypeScript, Cloudflare Pages, 5 idiomas" width="100%">
+  <img src="docs/portada.jpg" alt="Calibrario · Comparador de relojes automáticos · Astro, TypeScript, Cloudflare Pages, 5 idiomas" width="100%">
 </p>
 
 # Calibrario
