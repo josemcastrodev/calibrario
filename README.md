@@ -1,6 +1,14 @@
+<p align="center">
+  <img src="docs/cover.jpg" alt="Calibrario · Comparador de relojes automáticos · Astro, TypeScript, Cloudflare Pages, 5 idiomas" width="100%">
+</p>
+
 # Calibrario
 
 Comparador de relojes automáticos de 90 a 1.500 €, en Astro y en cinco idiomas. El diseño sigue [DESIGN.md](DESIGN.md) (basado en el de Sigmaphoto, con el rojo rubí como único color) y el contexto del proyecto está en [CLAUDE.md](CLAUDE.md).
+
+<p align="center">
+  <a href="https://calibrario.com"><img src="docs/screenshot.jpg" alt="Portada de calibrario.com" width="100%"></a>
+</p>
 
 ## Arrancar
 
